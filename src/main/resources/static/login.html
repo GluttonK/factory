@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Login</title>
+
+    <!-- vue ajax -->
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+</head>
+<body class="animsition">
+<div class="page-wrapper" id="app">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="bootstrap/dist/images/icon/logo.png" alt="CoolAdmin">
+                        </a>
+                    </div>
+                    <div class="login-form"  v-show="!success">
+
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label for="uname">请输入你的用户名</label>
+                                <input class="au-input au-input--full"
+                                       type="text"
+                                       id="uname"
+                                       name="uname"
+                                       placeholder="用户名"
+                                       v-model="uname"
+                                       ref="uname"
+                                       @blur="checkInputforReg('uname',regUserName,'您输入的用户名格式有误')">
+                                <label id="unameTip"></label>
+                            </div>
+                            <div class="form-group">
+                                <label>请输入你的密码</label>
+                                <input class="au-input au-input--full"
+                                       type="password" id="upwd"
+                                       name="password"
+                                       placeholder="用户密码"
+                                       v-model="upwd"
+                                       ref="upwd"
+                                       @blur="checkInputforReg('upwd',regPwd,'您输入的密码格式有误')">
+                                <label id="upwdTip"></label>
+                            </div>
+
+                            <div class="login-checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember">记住我
+                                </label>
+                                <label>
+                                    <a href="#">忘记密码？</a>
+                                </label>
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit"  @click="submitForm()">登录</button>
+                            <button class="au-btn au-btn--block au-btn--blue m-b-20" type="submit" onclick="window.open('register.html')">注册</button>
+                            <div class="register-link">
+                                <p>
+                                    你还没有申请账户么?
+                                    点击上方注册按钮注册一个吧
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="login-form" v-show="success">
+                        恭喜您！注册成功！
+                        <a href="index.html">前往工厂首页</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Jquery JS-->
+<script src="vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="vendor/slick/slick.min.js">
+</script>
+<script src="vendor/wow/wow.min.js"></script>
+<script src="vendor/animsition/animsition.min.js"></script>
+<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="vendor/circle-progress/circle-progress.min.js"></script>
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="vendor/select2/select2.min.js">
+</script>
+
+<!-- Main JS-->
+<script src="js/mainlogin.js"></script>
+
+</body>
+</html>
+<script>
+    var vue= new Vue(
+        {
+            el:"#app" ,
+            data: {
+                uname:null,//input 用户名
+                upwd:null,// 密码
+                errors: [], //错误信息
+                isLogin:false,//是否已登录
+                user:{},//已登录的用户对象
+                success:false,
+                regUserName : /^[a-zA-Z]\w{2,11}$/,
+                regPwd : /^\w{5,31}$/,
+                regFactoryName : /^.*[^\s]$/
+            },
+            methods: {
+
+                $:function(id){
+                    return document.getElementById(id);
+                },
+                checkInputforReg:function (id, reg, msg){
+                    // console.log(msg);
+                    // console.log(id);
+                    // console.log(reg);
+                    var input = document.getElementById(id);
+                    // console.log(input.value);
+                    if(!reg.test(input.value)){
+
+                        this.$(id+"Tip").innerHTML=msg;
+                        this.$(id+"Tip").className="text-danger";
+                        return false;
+                    }
+                    else{
+                        this.$(id+"Tip").innerHTML="  √ OK";
+                        this.$(id+"Tip").className="text-success";
+                        return true;
+                    }
+                },
+                //ajax提交表单
+                submitForm:function()
+                {
+
+                    //重新验证一次表单
+                    console.log("cxl");
+                    if(!this.checkInputforReg('uname', this.regUserName, '用户名以字母开头,3到12位')
+                        || !this.checkInputforReg('upwd', this.regPwd, '您输入的密码格式不正确')){
+                        console.log("clx");
+                        return false;
+                    }
+                    //封装表单参数
+                    const formData=new FormData();
+                    formData.append("uname",this.uname);
+
+                    formData.append("upwd",this.upwd);
+
+                    //异步请求
+                    axios
+                        .post('http://localhost:8080/user/ajax/login',formData)
+                        .then(response => {//回调函数
+                            console.log(response);
+                            if(response.data.result){
+                                this.success = true;
+                            }
+                            else{
+                                var errMsg = response.data.errMsg;
+                                if(errMsg == "用户名或密码不正确！"){
+                                    this.$("unameTip").innerHTML=errMsg;
+                                    this.$("unameTip").className="text-danger";
+                                }
+
+                            }
+                        })
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+
+
+                }
+
+
+            },
+        })
+
+
+
+
+</script>

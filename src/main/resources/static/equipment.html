@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>设备管理</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- vue ajax -->
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> -->
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- owl.carousel CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- educate icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/educate-custon-icon.css">
+    <!-- morrisjs CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- datapicker CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/datapicker/datepicker3.css">
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        .add-order a {
+            float: right;
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            display: block;
+            background: #006DF0;
+            /* width: 120px; */
+            padding: 6px 20px;
+            /* margin: 0px 1100px; */
+            color: #fff;
+            border-radius: 4px;
+            /* text-align: center; */
+        }
+        .search-order a {
+            /* float: right; */
+            /* position: absolute;
+            top: 40px;
+            right: 35px; */
+            display: block;
+            background: #006DF0;
+            width: 120px;
+            padding: 6px 20px;
+            margin: 0px 1100px;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .input-group-addon{
+            color: white;
+            background-color: #009AD5;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Start Left menu area -->
+<div class="left-sidebar-pro" >
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+            <strong><a href="index.html"><img src="img/logo/logosn.png" alt="" /></a></strong>
+        </div>
+        <div class="left-custom-menu-adp-wrap comment-scrollbar">
+            <nav class="sidebar-nav left-sidebar-menu-pro">
+                <ul class="metismenu" id="menu1">
+                    <li>
+                        <a title="Landing Page" href="/login.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">登录/注册</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/index.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">工厂首页</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/product.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">产品管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/equipment.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">设备管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/order.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">订单管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/planmanage.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产计划管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/schedule.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产调度管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/ordertrack.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产订单跟踪</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+</div>
+<!-- End Left menu area -->
+<!-- 主内容 -->
+<div class="all-content-wrapper" id="app" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area">
+        <div class="header-top-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header-top-wraper">
+                            <div class="row">
+                                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                    <div class="menu-switcher-pro">
+                                        <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="educate-icon educate-nav"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="header-top-menu tabl-d-n">
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                            <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="header-right-info">
+                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
+
+                                            <li class="nav-item">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <img src="" alt="" />
+                                                    <span class="admin-name">{{userName}}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                </a>
+                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    <li><a @click="logout()"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul class="mobile-menu-nav">
+                                    <li><a href="events.html">Event</a></li>
+                                    <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demoevent" class="collapse dropdown-header-top">
+                                            <li><a href="all-professors.html">All Professors</a>
+                                            </li>
+                                            <li><a href="add-professor.html">Add Professor</a>
+                                            </li>
+                                            <li><a href="edit-professor.html">Edit Professor</a>
+                                            </li>
+                                            <li><a href="professor-profile.html">Professor Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demopro" class="collapse dropdown-header-top">
+                                            <li><a href="all-students.html">All Students</a>
+                                            </li>
+                                            <li><a href="add-student.html">Add Student</a>
+                                            </li>
+                                            <li><a href="edit-student.html">Edit Student</a>
+                                            </li>
+                                            <li><a href="student-profile.html">Student Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="democrou" class="collapse dropdown-header-top">
+                                            <li><a href="all-courses.html">All Courses</a>
+                                            </li>
+                                            <li><a href="add-course.html">Add Course</a>
+                                            </li>
+                                            <li><a href="edit-course.html">Edit Course</a>
+                                            </li>
+                                            <li><a href="course-profile.html">Courses Info</a>
+                                            </li>
+                                            <li><a href="course-payment.html">Courses Payment</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demolibra" class="collapse dropdown-header-top">
+                                            <li><a href="library-assets.html">Library Assets</a>
+                                            </li>
+                                            <li><a href="add-library-assets.html">Add Library Asset</a>
+                                            </li>
+                                            <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <li><a href="departments.html">Departments List</a>
+                                            </li>
+                                            <li><a href="add-department.html">Add Departments</a>
+                                            </li>
+                                            <li><a href="edit-department.html">Edit Departments</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demo" class="collapse dropdown-header-top">
+                                            <li><a href="mailbox.html">Inbox</a>
+                                            </li>
+                                            <li><a href="mailbox-view.html">View Mail</a>
+                                            </li>
+                                            <li><a href="mailbox-compose.html">Compose Mail</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                            <li><a href="google-map.html">Google Map</a>
+                                            </li>
+                                            <li><a href="data-maps.html">Data Maps</a>
+                                            </li>
+                                            <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                            </li>
+                                            <li><a href="x-editable.html">X-Editable</a>
+                                            </li>
+                                            <li><a href="code-editor.html">Code Editor</a>
+                                            </li>
+                                            <li><a href="tree-view.html">Tree View</a>
+                                            </li>
+                                            <li><a href="preloader.html">Preloader</a>
+                                            </li>
+                                            <li><a href="images-cropper.html">Images Cropper</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                            <li><a href="bar-charts.html">Bar Charts</a>
+                                            </li>
+                                            <li><a href="line-charts.html">Line Charts</a>
+                                            </li>
+                                            <li><a href="area-charts.html">Area Charts</a>
+                                            </li>
+                                            <li><a href="rounded-chart.html">Rounded Charts</a>
+                                            </li>
+                                            <li><a href="c3.html">C3 Charts</a>
+                                            </li>
+                                            <li><a href="sparkline.html">Sparkline Charts</a>
+                                            </li>
+                                            <li><a href="peity.html">Peity Charts</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                            <li><a href="static-table.html">Static Table</a>
+                                            </li>
+                                            <li><a href="data-table.html">Data Table</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="formsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Pagemob" class="collapse dropdown-header-top">
+                                            <li><a href="login.html">Login</a>
+                                            </li>
+                                            <li><a href="register.html">Register</a>
+                                            </li>
+                                            <li><a href="lock.html">Lock</a>
+                                            </li>
+                                            <li><a href="password-recovery.html">Password Recovery</a>
+                                            </li>
+                                            <li><a href="404.html">404 Page</a></li>
+                                            <li><a href="500.html">500 Page</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu end -->
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list single-page-breadcome">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 form-horizontal">
+                                    <div class="col-lg-4">
+                                        <div class="input-group" >
+                                            <span class="input-group-addon">产品</span>
+                                            <input type="text" placeholder="产品名称" class="form-control" v-model="productname" ref="ProductName">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">设备序列号</span>
+                                            <input type="text" placeholder="设备序列号" class="form-control" v-model="equipmentSeq" ref="EquipmentSeq">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-order">
+                                    <!-- 触发search事件， 显示第一页 -->
+                                    <a href="#" @click.prevent="selectProductName(1)"><i class="fa fa-search"></i>查询设备</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="product-status mg-b-15"  >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="product-status-wrap">
+                        <div class="add-order">
+                            <a href="#"   data-toggle="modal"
+                               data-target="#myModal">新建设备</a>
+                        </div>
+                        <h4>设备列表</h4>
+                        <div class="asset-inner">
+                            <table>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>设备图片</th>
+                                    <th>设备序列号</th>
+                                    <th>可生产产品</th>
+                                    <th>设备状态</th>
+                                    <th style="text-align: center; width: 250px;">操作</th>
+                                </tr>
+                                <tr v-for="(equipment, index) in equipments">
+
+                                    <td>{{index + 1 + (pages.pageNo - 1) * pages.pageSize }}</td>
+                                    <td><img  :src="equipment.equipmentImgUrl" /></td>
+                                    <!--									<td>{{product.productImgUrl}}</td>-->
+                                    <td>{{equipment.equipmentSeq}}</td>
+                                    <td>{{equipment.productName}}</td>
+
+                                    <!--                                        <td v-for="product in equipment">{{product.productName}}</td>-->
+
+                                    <td>
+                                        <button class="ds-setting" v-if="equipment.equipmentStatus == 30" >故障</button>
+                                        <button class="du-setting" v-if="equipment.equipmentStatus == 20" >停用</button>
+                                        <button class="su-setting" v-if="equipment.equipmentStatus == 10" >启用</button>
+                                    </td>
+
+                                    <!-- <td>{{order.productCount}}</td>
+                                    <td>0</td>
+                                    <td>{{order.endDate}}</td> -->
+                                    <!-- <td>
+                                        <button class="pd-setting" v-if="order.orderStatus == 1" >已接收</button>
+                                        <button class="ds-setting" v-if="order.orderStatus == 2" >已拒绝</button>
+                                        <button class="ps-setting" v-if="order.orderStatus == 3" >未处理</button>
+                                        <button class="su-setting" v-if="order.orderStatus == 4" >已完成</button>
+                                    </td> -->
+                                    <td>
+                                        <button  title="Edit" class="pd-setting-ed" v-show="equipment.equipmentStatus == 10"><i class="fa fa-pencil-square-o" aria-hidden="true"  @click="equipment.equipmentStatus=20;getParam(index,equipment);updateStaduts();">停用</i></button>
+                                        <button  title="Edit" class="pd-setting-ed" v-show="equipment.equipmentStatus == 20"><i class="fa fa-pencil-square-o" aria-hidden="true"   @click="equipment.equipmentStatus=10;getParam(index,equipment);updateStaduts();">启用</i></button>
+                                        <button  title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal"
+                                                                                       data-target="#myModalEdit" @click="getParam(index,equipment)" >编辑</i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" @click="deleteByEquipmentId(equipment.id)">删除设备</i></button>
+                                    </td>
+                                    <!-- 	<td>0</td>
+                                        <td style="text-align: center">
+                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" v-if="order.orderStatus == 3"
+                                                    @click="changeStatus(index, 1)">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>接单</button>
+                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" v-if="order.orderStatus == 3"
+                                                    @click="changeStatus(index, 2)">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>拒单</button>
+                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" v-if="order.orderStatus == 1">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>转成计划</button>
+                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" v-if="order.orderStatus == 5">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>完成订单</button>
+                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>查看</button>
+                                        </td> -->
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- 分页-->
+
+                        <ul class="pagination">
+
+                        </ul>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"
+                                                         @click="pages.pageNo == 1 ? pages.pageNo = 1 : pages.pageNo -= 1; selectProductName(pages.pageNo);">上一页</a></li>
+                                <li   v-for="i in pages.totalPage"  :class="[pages.pageNo != i ? '':'active']" >
+                                    <a href="#" @click.prevent="selectProductName(i)">{{i}}</a>
+                                </li>
+
+                                <li class="page-item"><a class="page-link" href="#"
+                                                         @click="pages.pageNo == pages.totalPage ? pages.pageNo = pages.totalPage : pages.pageNo += 1; selectProductName(pages.pageNo);">下一页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主内容结束 -->
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新建设备
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input type="file"  v-show="true"  name="upfile" @change="getfile($event)" />
+                        <span>{{errMsg}}</span>
+                        <button type="button" class="btn btn-primary" v-show="true"  @click="uploadfile">上传图片</button>
+                        <img  :src="url" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadEquipmentSeq1">设备序列号:</label>
+                        <input id="uploadEquipmentSeq1" name="epmname" v-model="uploadEquipmentSeq"
+                               class="form-control"   />
+                    </div>
+                    <div class="form-group">
+                        <label for="canproduct">可生产产品:</label>
+                        <select class="form-control" tabindex="-1" id="canproduct" name=""
+                                placeholder="可生产产品" v-model="canproduct">
+                            <option v-for="product in products" :value="product">{{product.productName}}</option>
+
+                        </select>
+                        <label for="yield">产品产能:</label>
+                        <input id="yield" name="yield" v-model="yield"
+                               class="form-control"   />
+                        <select class="form-control" tabindex="-1" id="1" name=""
+                                placeholder="单位" ref="search_status"v-model="unitstatus">
+                            <option value="">单位</option>
+                            <option value="10">天</option>
+                            <option value="20">月</option>
+                            <option value="30">年</option>
+                            <option value="40">小时</option>
+
+                        </select>
+
+                    </div>
+                    <select class="form-control" tabindex="-1" id="state" name=""
+                            placeholder="设备状态" ref="search_status"v-model="status">
+                        <option value="">设备状态</option>
+                        <option value="10">启动</option>
+                        <option value="20">停用</option>
+                        <option value="30">故障</option>
+
+                    </select>
+
+                    <p v-if="errors.length">
+                    <ul>
+                        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                    </ul>
+                    </p>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" ref="btnClose1" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" @click="insertEquipment">
+                        保存
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 主内容结束 -->
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModalEdit"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">
+                        编辑设备
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input type="file"  v-show="true"  name="upfile" @change="getfile($event)" />
+                        <span>{{errMsg}}</span>
+                        <button type="button" class="btn btn-primary" v-show="true"  @click="uploadfile">上传图片</button>
+                        <img  :src="url" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadEquipmentSeq2">设备序列号:</label>
+                        <input id="uploadEquipmentSeq2" name="epmname" v-model="uploadEquipmentSeq"
+                               class="form-control"   />
+                    </div>
+                    <div class="form-group">
+                        <label for="canproduct2">可生产产品:</label>
+                        <select class="form-control" tabindex="-1" id="canproduct2" name=""
+                                placeholder="可生产产品" v-model="canproduct">
+                            <option v-for="product in products" :value="product">{{product.productName}}</option>
+
+                        </select>
+                        <label for="yield1">产品产能:</label>
+                        <input id="yield1" name="yield" v-model="yield"
+                               class="form-control"   />
+                        <select class="form-control" tabindex="-1" id="12" name=""
+                                placeholder="单位" ref="search_status"v-model="unitstatus">
+                            <option value="">单位</option>
+                            <option value="10">天</option>
+                            <option value="20">月</option>
+                            <option value="30">年</option>
+                            <option value="40">小时</option>
+
+                        </select>
+
+                    </div>
+                    <select class="form-control" tabindex="-1" id="state1" name=""
+                            placeholder="设备状态" ref="search_status"v-model="status">
+                        <option value="">设备状态</option>
+                        <option value="10">启动</option>
+                        <option value="20">停用</option>
+                        <option value="30">故障</option>
+
+                    </select>
+
+                    <p v-if="errors.length">
+                    <ul>
+                        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                    </ul>
+                    </p>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" ref="btnClose" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" @click="updateEquipment">
+                        保存
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+</div>
+
+<!-- jquery
+    ============================================ -->
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="js/metisMenu/metisMenu.min.js"></script>
+<script src="js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="js/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="js/calendar/moment.min.js"></script>
+<script src="js/calendar/fullcalendar.min.js"></script>
+<script src="js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="js/main.js"></script>
+<!-- tawk chat JS
+    ============================================ -->
+<!-- <script src="js/tawk-chat.js"></script> -->
+</body>
+</html>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            test:"cxl",
+            // orders: null,
+            equipments:null,
+            result:false,
+            equipmentname:null,
+            uploadEquipmentName:null,
+            equipmentnum:null,
+            pages:{},
+            errors: [],
+            file:null,
+            info:null,
+            filename:null,
+            url:null,
+            isShow:true,
+            errMsg:"",
+            Index:0,
+            Equipment:null,
+            status:null,
+            yield:null,
+            unit:null,
+            uploadEquipmentSeq:null,
+            equipmentSeq:null,
+            productname:"",
+            products:null,
+            unitstatus:null,
+            canproduct:null
+
+
+
+        },
+
+        methods:{
+            getParam:function(index,equipment){
+                this.Inedx=index;
+                this.Equipment=equipment;
+
+
+            },
+            updateStaduts:function(){
+
+                const formData = new FormData();
+                formData.append("equipmentStatus", this.Equipment.equipmentStatus);
+                formData.append("equipmentId", this.Equipment.id);
+                axios
+                    .post('http://localhost:8080/equipment/updateStatusById',formData)
+                    .then(response =>{
+                        this.selectProductName(1);
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+
+            refresh:function(){
+                this.$forceUpdate();
+            },
+            // selectProductsPage:function(i){
+            //
+            //     const formData = new FormData();
+            //     formData.append("productname",  this.productname);
+            //     formData.append("equipmentSeq", this.equipmentSeq);
+            //     axios
+            //         .post('http://localhost:8080/equipment/getProductByPage?page='+i,formData)
+            //         .then(response =>{
+            //             //清空订单集合对象
+            //             //清空产品集合对象
+            //             this.equipments=null;
+            //             //清空page对象
+            //             this.pages=null;
+            //             //取响应数据赋值给vue对象中的对象
+            //             // this.orders=response.data.orders;
+            //             this.equipments=response.data.equipments;
+            //             this.pages=response.data.pages;
+            //         })
+            //         .catch(function (error) { // 请求失败处理
+            //             console.log(error);
+            //         });
+            //
+            //
+            //
+            // },
+
+            getAllProducts:function(){
+                axios
+                    .get('http://localhost:8080/plan/getProducts')
+                    .then(response =>{
+                        //清空产品集合对象
+                        this.products=null;
+
+                        //取响应数据赋值给vue对象中的对象
+                        this.products=response.data.data;
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+
+            },
+            selectProductName:function(i){
+                this.productname=this.$refs.ProductName.value;
+                this.equipmentSeq=this.$refs.EquipmentSeq.value;
+                const formData = new FormData();
+                formData.append("productname", this.productname);
+                formData.append("equipmentSeq", this.equipmentSeq);
+                axios
+                    .post('http://localhost:8080/equipment/getProductNameByPage?page='+i,formData)
+                    .then(response =>{
+                        //清空产品集合对象
+                        this.equipments=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        // this.orders=response.data.orders;
+                        this.equipments=response.data.equipments;
+                        this.pages=response.data.pages;
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+
+
+
+            getEquipmentByPage:function(i){
+
+
+                axios
+                    .get('http://localhost:8080/equipment/getAllEquipmentByPage?page='+i)
+                    .then(response =>{
+                        //清空订单集合对象
+                        //清空产品集合对象
+                        this.equipments=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        // this.orders=response.data.orders;
+                        this.equipments=response.data.equipments;
+                        this.pages=response.data.pages;
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+            getEquipmentByName:function(i){
+                this.equipmentname=this.$refs.searchEquipmentName.value;
+                console.log(this.equipmentname);
+                const formData = new FormData();
+                formData.append("equipmentname", this.equipmentname);
+                axios
+                    .post('http://localhost:8080/equipment/getAllByName?page='+i,formData)
+                    .then(response =>{
+                        //清空订单集合对象
+                        //清空产品集合对象
+                        this.equipments=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        // this.orders=response.data.orders;
+                        this.equipments=response.data.equipments;
+                        this.pages=response.data.pages;
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+            getEquipmentBySeq:function(i){
+                this.equipmentSeq=this.$refs.searchEquipmentSeq.value;
+                console.log(this.equipmentSeq);
+                const formData = new FormData();
+                formData.append("equipmentSeq", this.equipmentSeq);
+                axios
+                    .post('http://localhost:8080/equipment/getAllBySeq?page='+i,formData)
+                    .then(response =>{
+                        //清空订单集合对象
+                        //清空产品集合对象
+                        this.equipments=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        // this.orders=response.data.orders;
+                        this.equipments=response.data.equipments;
+                        this.pages=response.data.pages;
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+            },
+            updateEquipment:function(){
+                const formData = new FormData();
+                formData.append("productid",this.canproduct.id);
+                formData.append("yield",this.yield);
+                formData.append("unit",this.unitstatus);
+
+                formData.append("uploadEquipmentSeq", this.uploadEquipmentSeq);
+                formData.append("url", this.url);
+                formData.append("status",this.status);
+
+                console.log("status:"+this.status);
+
+                axios
+                    .post('http://localhost:8080/equipment/updateById',formData)
+                    .then(response =>{
+                        this.$refs.btnClose.click();
+                        alert("修改成功！");
+                        this.selectProductName(1);
+                        this.refresh();
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+            },
+            checkForm:function(e){
+                this.errors=[];
+                if(this.uploadEquipmentName){
+                    return true;
+                }
+                e.preventDefault();
+            },
+            submitForm:function(){
+
+            },
+            deleteByEquipmentId:function(id){
+                const formData = new FormData();
+                formData.append("equipmentid", id);
+                axios
+                    .post('http://localhost:8080/equipment/deleteByEquipmentId',formData)
+                    .then(response =>{
+
+                        alert("删除成功！");
+                        this.selectProductName(1);
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+
+            },
+            insertEquipment:function(){
+
+                const formData = new FormData();
+                formData.append("productid",this.canproduct.id);
+                formData.append("yield",this.yield);
+                formData.append("unit",this.unitstatus);
+
+                formData.append("uploadEquipmentSeq", this.uploadEquipmentSeq);
+                formData.append("url", this.url);
+                formData.append("status",this.status);
+
+                console.log("status:"+this.status);
+
+                axios
+                    .post('http://localhost:8080/equipment/insert',formData)
+                    .then(response =>{
+                        this.$refs.btnClose1.click();
+                        alert("新建成功！");
+                        this.selectProductName(1);
+                        this.refresh();
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+            },
+            getfile:function(event){//取文件对象
+                this.file=event.target.files[0];
+                console.log(this.file);
+            },
+            uploadfile:function(){//异步上传文件
+                //判断文件对象不为空
+                if(this.file==null){
+                    return;
+                }
+
+                //封装ajax请求参数
+                const formdata=new FormData();
+                //上传的文件对象
+                formdata.append("uploadFile",this.file);
+                //formdata.append("submit",false);
+
+                const config={
+                    headers:{"Content-Type":"multipart/form-data"}
+                };
+                //异步请求
+                axios
+                    .post('http://localhost:8080/product/upload',formdata,config)
+                    //回调函数
+                    .then(response => {
+                        console.log(response);
+                        if(response.data.result=='true'){
+                            this.url=response.data.url;
+                            this.isShow=false;
+                        }
+                        else{
+                            this.errMsg=response.data.errMsg;
+                        }
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+            getUser:function () {
+                axios
+                    .get("http://localhost:8080/getUser")
+                    .then(response =>{
+                        if(response.data.result == true){
+                            this.userName = response.data.data;
+                        }else {
+                            alert("您未登录")
+                            window.location.href = 'http://localhost:8080/login.html';
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+            logout:function () {
+                axios
+                    .get("http://localhost:8080/logout")
+                    .then(response =>{
+                        window.location.href = 'http://localhost:8080/login.html';
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            }
+
+        },
+
+        created() {
+            this.getUser();
+        },
+
+        mounted() {
+            // this.getEquipmentByPage(1);
+            // this.selectProductName(1);
+            this.selectProductName(1);
+            this.getAllProducts();
+        }
+    })
+</script>
+
+<!-- jquery
+    ============================================ -->
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="js/metisMenu/metisMenu.min.js"></script>
+<script src="js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="js/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="js/calendar/moment.min.js"></script>
+<script src="js/calendar/fullcalendar.min.js"></script>
+<script src="js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="js/main.js"></script>
+<!-- tawk chat JS
+    ============================================ -->
+<!-- <script src="js/tawk-chat.js"></script> -->

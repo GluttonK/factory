@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nobugs.dao.TProductOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.nobugs.entity.TProductOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_userid" property="createUserid" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_userid" property="updateUserid" jdbcType="INTEGER" />
+    <result column="order_seq" property="orderSeq" jdbcType="VARCHAR" />
+    <result column="order_source" property="orderSource" jdbcType="INTEGER" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <!-- 新加属性   -->
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_count" property="productCount" jdbcType="INTEGER" />
+    <!-- 新加属性   -->
+    <result column="working_count" property="workingCount" jdbcType="INTEGER" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="factory_id" property="factoryId" jdbcType="INTEGER" />
+    <result column="factory_yield" property="factoryYield" jdbcType="INTEGER" />
+    <result column="bak" property="bak" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--查询产能使用-->
+  <resultMap id="BaseResultMap2" type="com.nobugs.entity.ProductYield" >
+    <id column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="yield" property="yield" jdbcType="INTEGER" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, flag, create_time, create_userid, update_time, update_userid, order_seq, order_source, 
+    product_id, product_count, end_date, order_status, factory_id, factory_yield
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT o.*, p.product_name AS product_name, num.working_count AS working_count
+    FROM t_product_order AS o
+            LEFT JOIN t_product AS p ON o.product_id = p.id
+            LEFT JOIN order_completed_num AS num ON o.id = num.order_id
+    where o.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAllByPage" resultMap="BaseResultMap" >
+    SELECT o.*, p.product_name AS product_name, num.working_count AS working_count
+    FROM t_product_order AS o
+			LEFT JOIN t_product AS p ON o.product_id = p.id
+			LEFT JOIN order_completed_num AS num ON o.id = num.order_id
+  </select>
+
+
+  <!--获取所有订单，在业务逻辑层统计各个月份个数-->
+  <select id="selectAll" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_product_order
+  </select>
+
+  <!--查找指定订单状态的个数-->
+  <select id="selectNumByStatus" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    SELECT COUNT(*)
+    FROM t_product_order AS o
+    WHERE o.order_status = #{orderStatus};
+  </select>
+
+  <!--查询可用产能-->
+  <select id="selectYield" resultMap="BaseResultMap2"  >
+    SELECT p.id AS product_id, SUM(ep.yield) AS yield
+    FROM t_product AS p
+         LEFT JOIN t_equipment_product AS ep ON (p.id = ep.product_id)
+         LEFT JOIN t_equipment AS e ON (ep.equipment_id = e.id)
+    WHERE p.factory_id = #{factoryId, jdbcType=INTEGER} AND  e.equipment_status = 10
+    GROUP BY p.id
+  </select>
+
+
+
+  <!--去掉后缀-->
+  <select id="searchByPage" resultMap="BaseResultMap" >
+    SELECT o.*, p.product_name AS product_name, num.working_count AS working_count
+    FROM t_product_order AS o
+			LEFT JOIN t_product AS p ON o.product_id = p.id
+			LEFT JOIN order_completed_num AS num ON o.id = num.order_id
+	WHERE
+    <trim suffixOverrides="and" >
+
+      <if test="t.orderSeq != null and !t.orderSeq.equals('')" >
+        o.order_seq = #{t.orderSeq,jdbcType=VARCHAR} and
+      </if>
+      <if test="t.orderStatus != null and !t.orderStatus.equals('')" >
+        o.order_status = #{t.orderStatus,jdbcType=INTEGER} and
+      </if>
+      <if test="t.productName != null and !t.productName.equals('')" >
+        p.product_name = #{t.productName,jdbcType=VARCHAR} and
+      </if>
+      <if test="t.factoryId != null" >
+        o.factory_id = #{t.factoryId,jdbcType=INTEGER} and
+      </if>
+    </trim>
+  </select>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_product_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nobugs.entity.TProductOrder" >
+    insert into t_product_order (id, flag, create_time, 
+      create_userid, update_time, update_userid, 
+      order_seq, order_source, product_id, 
+      product_count, end_date, order_status, 
+      factory_id, factory_yield)
+    values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUserid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=INTEGER}, 
+      #{orderSeq,jdbcType=VARCHAR}, #{orderSource,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{productCount,jdbcType=INTEGER}, #{endDate,jdbcType=DATE}, #{orderStatus,jdbcType=INTEGER}, 
+      #{factoryId,jdbcType=INTEGER}, #{factoryYield,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nobugs.entity.TProductOrder"
+  keyProperty="id" useGeneratedKeys="true" >
+    insert into t_product_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUserid != null" >
+        create_userid,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserid != null" >
+        update_userid,
+      </if>
+      <if test="orderSeq != null" >
+        order_seq,
+      </if>
+      <if test="orderSource != null" >
+        order_source,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="productCount != null" >
+        product_count,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="factoryYield != null" >
+        factory_yield,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserid != null" >
+        #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserid != null" >
+        #{updateUserid,jdbcType=INTEGER},
+      </if>
+      <if test="orderSeq != null" >
+        #{orderSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null" >
+        #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productCount != null" >
+        #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryYield != null" >
+        #{factoryYield,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nobugs.entity.TProductOrder" >
+    update t_product_order
+    <set >
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserid != null" >
+        create_userid = #{createUserid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserid != null" >
+        update_userid = #{updateUserid,jdbcType=INTEGER},
+      </if>
+      <if test="orderSeq != null" >
+        order_seq = #{orderSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null" >
+        order_source = #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productCount != null" >
+        product_count = #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="factoryId != null" >
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryYield != null" >
+        factory_yield = #{factoryYield,jdbcType=INTEGER},
+      </if>
+      <if test="bak != null" >
+        bak = #{bak,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nobugs.entity.TProductOrder" >
+    update t_product_order
+    set flag = #{flag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_userid = #{createUserid,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_userid = #{updateUserid,jdbcType=INTEGER},
+      order_seq = #{orderSeq,jdbcType=VARCHAR},
+      order_source = #{orderSource,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      product_count = #{productCount,jdbcType=INTEGER},
+      end_date = #{endDate,jdbcType=DATE},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=INTEGER},
+      factory_yield = #{factoryYield,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

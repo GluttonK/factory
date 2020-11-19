@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>订单跟踪</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--否则就是-->
+	<!-- vue ajax -->
+	<script src="http://localhost:8080/js/jquery.min.js"></script>
+	<script src="http://localhost:8080/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<script src="http://localhost:8080/js/vue.js"></script>
+	<script src="http://localhost:8080/js/axios.min.js"></script>
+
+	<!-- favicon
+        ============================================ -->
+	<link rel="shortcut icon" type="image/x-icon" href="http://localhost:8080/img/favicon.ico">
+	<!-- Google Fonts
+        ============================================ -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> -->
+	<!-- Bootstrap CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css">
+	<!-- Bootstrap CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/font-awesome.min.css">
+	<!-- owl.carousel CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/owl.carousel.css">
+	<link rel="stylesheet" href="http://localhost:8080/css/owl.theme.css">
+	<link rel="stylesheet" href="http://localhost:8080/css/owl.transitions.css">
+	<!-- animate CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/animate.css">
+	<!-- normalize CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/normalize.css">
+	<!-- meanmenu icon CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/meanmenu.min.css">
+	<!-- main CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/main.css">
+	<!-- educate icon CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/educate-custon-icon.css">
+	<!-- morrisjs CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/morrisjs/morris.css">
+	<!-- mCustomScrollbar CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/scrollbar/jquery.mCustomScrollbar.min.css">
+	<!-- metisMenu CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/metisMenu/metisMenu.min.css">
+	<link rel="stylesheet" href="http://localhost:8080/css/metisMenu/metisMenu-vertical.css">
+	<!-- calendar CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/calendar/fullcalendar.min.css">
+	<link rel="stylesheet" href="http://localhost:8080/css/calendar/fullcalendar.print.min.css">
+	<!-- datapicker CSS
+		============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/datapicker/datepicker3.css">
+	<!-- style CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/style.css">
+	<!-- responsive CSS
+        ============================================ -->
+	<link rel="stylesheet" href="http://localhost:8080/css/responsive.css">
+	<!-- modernizr JS
+        ============================================ -->
+		
+		
+	<!-- Favicons -->
+	<!-- <link href="img/favicon.png" rel="icon"> -->
+	<!-- <link href="img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+	
+	<!--external css-->
+	<!-- <link href="lib_Dashio/font-awesome/css/font-awesome.css" rel="stylesheet" /> -->
+	<!-- Custom styles for this template -->
+	<!-- <link href="css_Dashio/style.css" rel="stylesheet"> -->
+	<!-- <link href="css_Dashio/style-responsive.css" rel="stylesheet"> -->
+	
+	
+	<script src="http://localhost:8080/js/vendor/modernizr-2.8.3.min.js"></script>
+	<style>
+		.form-panel {
+		    background: #ffffff;
+		    margin: 10px;
+		    padding: 10px;
+		    box-shadow: 0px 3px 2px #aab2bd;
+		    text-align: left;
+		}
+		.fa {
+		    display: inline-block;
+		    font: normal normal normal 14px/1 FontAwesome;
+		    font-size: inherit;
+		    text-rendering: auto;
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+		}
+		.add-order a {
+			float: right;
+			position: absolute;
+            top: 20px;
+            right: 35px;
+			display: block;
+			background: #006DF0;
+			/* width: 120px; */
+			padding: 6px 20px;
+			/* margin: 0px 1100px; */
+			color: #fff;
+			border-radius: 4px;
+			/* text-align: center; */
+		}
+		.search-order a {
+			/* float: right; */
+			/* position: absolute;
+            top: 40px;
+            right: 35px; */
+			display: block;
+			background: #006DF0;
+			width: 120px;
+			padding: 6px 20px;
+			margin: 0px 1100px;
+			color: #fff;
+			border-radius: 4px;
+			text-align: center;
+		}
+		.input-group-addon{
+			color: white;
+			background-color: #009AD5;
+		}
+		.outBox{
+			height: 400px;
+			overflow-y: auto;
+
+		}
+		.table th, tr,td,caption{
+
+			border: 1.5px solid rgba(1, 17, 15, 0.55);
+
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- Start Left menu area -->
+<div class="left-sidebar-pro" >
+	<nav id="sidebar" class="">
+		<div class="sidebar-header">
+			<a href="http://localhost:8080/index.html"><img class="main-logo" src="http://localhost:8080/img/logo/logo.png" alt="" /></a>
+			<strong><a href="http://localhost:8080/index.html"><img src="http://localhost:8080/img/logo/logosn.png" alt="" /></a></strong>
+		</div>
+		<div class="left-custom-menu-adp-wrap comment-scrollbar">
+			<nav class="sidebar-nav left-sidebar-menu-pro">
+				<ul class="metismenu" id="menu1">
+					<li>
+						<a title="Landing Page" href="/login.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">登录/注册</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">工厂首页</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">产品管理</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">设备管理</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="/order.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">订单管理</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="/planmanage.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产计划管理</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产调度管理</span></a>
+					</li>
+					<li>
+						<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产订单跟踪</span></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</nav>
+</div>
+<!-- End Left menu area -->
+<!-- 主内容 -->
+<div class="all-content-wrapper" >
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="logo-pro">
+					<a href="http://localhost:8080/index.html"><img class="main-logo" src="http://localhost:8080/img/logo/logo.png" alt="" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="header-advance-area" id="app2">
+		<div class="header-top-area">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="header-top-wraper">
+							<div class="row">
+								<div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+									<div class="menu-switcher-pro">
+										<button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+											<i class="educate-icon educate-nav"></i>
+										</button>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+									<div class="header-top-menu tabl-d-n">
+										<ul class="nav navbar-nav mai-top-nav">
+											<li class="nav-item">
+												<a href="#" class="nav-link" style="padding: 20px 5px">当前位置:</a>
+											</li>
+											<li class="nav-item" >
+												<a href="http://localhost:8080/order.html" class="nav-link" style="padding: 20px 5px">订单管理 ></a>
+											</li>
+											<li class="nav-item">
+												<a href="#" class="nav-link" style="padding: 20px 5px" th:text="${'订单详情' + '(' + order.orderSeq +')'}"></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+									<div class="header-right-info">
+										<ul class="nav navbar-nav mai-top-nav header-right-menu">
+
+											<li class="nav-item">
+												<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+													<img src="" alt="" />
+													<span class="admin-name">{{userName}}</span>
+													<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+												</a>
+												<ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+													<li><a @click="logout()"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Mobile Menu start -->
+		<div class="mobile-menu-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="mobile-menu">
+							<nav id="dropdown">
+								<ul class="mobile-menu-nav">
+									<li><a href="events.html">Event</a></li>
+									<li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demoevent" class="collapse dropdown-header-top">
+											<li><a href="all-professors.html">All Professors</a>
+											</li>
+											<li><a href="add-professor.html">Add Professor</a>
+											</li>
+											<li><a href="edit-professor.html">Edit Professor</a>
+											</li>
+											<li><a href="professor-profile.html">Professor Profile</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demopro" class="collapse dropdown-header-top">
+											<li><a href="all-students.html">All Students</a>
+											</li>
+											<li><a href="add-student.html">Add Student</a>
+											</li>
+											<li><a href="edit-student.html">Edit Student</a>
+											</li>
+											<li><a href="student-profile.html">Student Profile</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="democrou" class="collapse dropdown-header-top">
+											<li><a href="all-courses.html">All Courses</a>
+											</li>
+											<li><a href="add-course.html">Add Course</a>
+											</li>
+											<li><a href="edit-course.html">Edit Course</a>
+											</li>
+											<li><a href="course-profile.html">Courses Info</a>
+											</li>
+											<li><a href="course-payment.html">Courses Payment</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demolibra" class="collapse dropdown-header-top">
+											<li><a href="library-assets.html">Library Assets</a>
+											</li>
+											<li><a href="add-library-assets.html">Add Library Asset</a>
+											</li>
+											<li><a href="edit-library-assets.html">Edit Library Asset</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demodepart" class="collapse dropdown-header-top">
+											<li><a href="departments.html">Departments List</a>
+											</li>
+											<li><a href="add-department.html">Add Departments</a>
+											</li>
+											<li><a href="edit-department.html">Edit Departments</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="demo" class="collapse dropdown-header-top">
+											<li><a href="mailbox.html">Inbox</a>
+											</li>
+											<li><a href="mailbox-view.html">View Mail</a>
+											</li>
+											<li><a href="mailbox-compose.html">Compose Mail</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+											<li><a href="google-map.html">Google Map</a>
+											</li>
+											<li><a href="data-maps.html">Data Maps</a>
+											</li>
+											<li><a href="pdf-viewer.html">Pdf Viewer</a>
+											</li>
+											<li><a href="x-editable.html">X-Editable</a>
+											</li>
+											<li><a href="code-editor.html">Code Editor</a>
+											</li>
+											<li><a href="tree-view.html">Tree View</a>
+											</li>
+											<li><a href="preloader.html">Preloader</a>
+											</li>
+											<li><a href="images-cropper.html">Images Cropper</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="Chartsmob" class="collapse dropdown-header-top">
+											<li><a href="bar-charts.html">Bar Charts</a>
+											</li>
+											<li><a href="line-charts.html">Line Charts</a>
+											</li>
+											<li><a href="area-charts.html">Area Charts</a>
+											</li>
+											<li><a href="rounded-chart.html">Rounded Charts</a>
+											</li>
+											<li><a href="c3.html">C3 Charts</a>
+											</li>
+											<li><a href="sparkline.html">Sparkline Charts</a>
+											</li>
+											<li><a href="peity.html">Peity Charts</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="Tablesmob" class="collapse dropdown-header-top">
+											<li><a href="static-table.html">Static Table</a>
+											</li>
+											<li><a href="data-table.html">Data Table</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="formsmob" class="collapse dropdown-header-top">
+											<li><a href="basic-form-element.html">Basic Form Elements</a>
+											</li>
+											<li><a href="advance-form-element.html">Advanced Form Elements</a>
+											</li>
+											<li><a href="password-meter.html">Password Meter</a>
+											</li>
+											<li><a href="multi-upload.html">Multi Upload</a>
+											</li>
+											<li><a href="tinymc.html">Text Editor</a>
+											</li>
+											<li><a href="dual-list-box.html">Dual List Box</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="Appviewsmob" class="collapse dropdown-header-top">
+											<li><a href="basic-form-element.html">Basic Form Elements</a>
+											</li>
+											<li><a href="advance-form-element.html">Advanced Form Elements</a>
+											</li>
+											<li><a href="password-meter.html">Password Meter</a>
+											</li>
+											<li><a href="multi-upload.html">Multi Upload</a>
+											</li>
+											<li><a href="tinymc.html">Text Editor</a>
+											</li>
+											<li><a href="dual-list-box.html">Dual List Box</a>
+											</li>
+										</ul>
+									</li>
+									<li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+										<ul id="Pagemob" class="collapse dropdown-header-top">
+											<li><a href="http://localhost:8080/login.html">Login</a>
+											</li>
+											<li><a href="http://localhost:8080/register.html">Register</a>
+											</li>
+											<li><a href="lock.html">Lock</a>
+											</li>
+											<li><a href="password-recovery.html">Password Recovery</a>
+											</li>
+											<li><a href="404.html">404 Page</a></li>
+											<li><a href="500.html">500 Page</a></li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile Menu end -->
+		
+	</div>
+
+	<section class="wrapper" style="margin: 30px; ">
+	  <!-- BASIC FORM VALIDATION -->
+	  <!--订单基本信息-->
+	  <div class="row mt">
+	    <div class="col-lg-12">
+	      <h4><i class="fa fa-angle-right"></i> 订单基本信息</h4>
+	      <div class="form-panel" style="background-color: #d8ffef">
+	        <form role="form" class="form-horizontal style-form">
+				<div class="form-group form-inline" style="margin: 50px;">
+					<div class="col-lg-4">
+						<h4 th:text="${'订单编号：' + order.orderSeq}"></h4>
+					</div>
+					<div class="col-lg-4">
+						<h4 th:text="${'订单来源：' + '线下来源'}"></h4>
+					</div>
+					<div class="col-lg-4">
+						<h4 th:text="${'订单产品：' + order.productName}"></h4>
+					</div>
+	            </div>
+
+				<div class="form-group form-inline" style="margin: 50px;">
+					<div class="col-lg-4">
+			            <h4 th:text="${'订单数量：' + order.productCount}"></h4>
+					</div>
+			        <div class="col-lg-4">
+			            <h4 th:text="${'订单截止日期：' + #dates.format(order.endDate, 'yyyy-MM-dd HH:mm:ss')}"></h4>
+			        </div>
+					<div class="col-lg-4">
+			          <h4 th:text="${'创建时间：' + #dates.format(order.createTime, 'yyyy-MM-dd HH:mm:ss')}">创建时间：</h4>
+					</div>
+				</div>
+	        </form>
+	      </div>
+	      <!-- /form-panel -->
+	    </div>
+	    <!-- /col-lg-12 -->
+	  </div>
+	  <!-- /row -->
+	  <!-- 接单信息-->
+	  <div class="row mt" th:if="${(order.orderStatus ne 2) and (order.orderStatus ne 3)}" >
+	    <div class="col-lg-12">
+	      <h4><i class="fa fa-angle-right"></i> 接单信息</h4>
+	      <div class="form-panel" style="background-color: #d8fffd">
+	        <div class=" form">
+	          <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action="">
+	            <div class="form-group form-inline">
+				  <div class="col-lg-6 ">
+				    <label for="acTime" class="control-label col-lg-2">接单时间</label>
+				    <div class="col-lg-10">
+				      <input class=" form-control" disabled="true" id="acTime" name="acTime" minlength="2"
+							 th:value="${#dates.format(order.updateTime, 'yyyy-MM-dd HH:mm:ss')}" type="text" required />
+				    </div>
+				  </div>
+				  <div class="col-lg-6 ">
+				    <label for="acUser" class="control-label col-lg-2">操作员</label>
+				    <div class="col-lg-10">
+				      <input class="form-control " disabled="true" id="acUser" type="text" name="acUser"
+							 th:value="${order.updateUserid}" required />
+				    </div>
+				  </div>
+	            </div>
+	          </form>
+	        </div>
+	      </div>
+	      <!-- /form-panel -->
+	    </div>
+	    <!-- /col-lg-12 -->
+	  </div>
+
+	  <!-- 拒单信息 -->
+	  <div class="row mt" th:if="${order.orderStatus eq 2}">
+	    <div class="col-lg-12">
+	      <h4><i class="fa fa-angle-right"></i> 拒单信息</h4>
+	      <div class="form-panel" style="background-color: #f1d690">
+	        <div class=" form">
+	          <form class="cmxform form-horizontal style-form" id="reMsg" method="get" action="">
+	            <div class="form-group form-inline">
+				  <div class="col-lg-6 ">
+					<label for="reTime" class="control-label col-lg-2 ">拒单时间</label>
+					<div class="col-lg-10">
+					  <input class=" form-control" disabled="true" id="reTime" name="name" minlength="2"
+							 th:value="${#dates.format(order.updateTime, 'yyyy-MM-dd HH:mm:ss')}" type="text" required />
+					</div>
+				  </div>
+				  <div class="col-lg-6 ">
+					<label for="reUser" class="control-label col-lg-2">操作员ID</label>
+					<div class="col-lg-10">
+					  <input class="form-control " disabled="true" id="reUser" type="text"
+							 th:value="${order.updateUserid}" name="reUser" required />
+					</div>
+				  </div>
+	            </div>
+
+				<div class="form-group">
+					<label for="reComment" class="control-label col-lg-1 ">拒单理由：</label>
+					<div class="col-lg-10">
+						<textarea class=" col-lg-10" disabled="true" rows="4" id="reComment" th:text="${order.bak}"></textarea>
+					</div>
+				</div>
+	          </form>
+	        </div>
+	      </div>
+	      <!-- /form-panel -->
+	    </div>
+	    <!-- /col-lg-12 -->
+	  </div>
+	  <!-- /row -->
+	  <!-- 生产计划安排 -->
+	  <div class="row mt"  th:if="${(order.orderStatus ne 1) and (order.orderStatus ne 2) and (order.orderStatus ne 3)}">
+	    <div class="col-lg-12" >
+	      <h4><i class="fa fa-angle-right"></i> 计划基本信息</h4>
+	      <div class="form-panel" style="background-color: #edffe9">
+	        <form role="form" class="form-horizontal style-form">
+				<div class="form-group form-inline" style="margin: 50px;">
+					<div class="col-lg-4">
+						<h4 th:text="${'生产计划编号：' + plan.planSeq }">生产计划编号：</h4>
+					</div>
+					<div class="col-lg-4">
+						<h4 th:text="${'产品：：' + order.productName }">产品：</h4>
+					</div>
+					<div class="col-lg-4">
+						<h4 th:text="${'计划数量：' + plan.planCount }">计划数量：</h4>
+					</div>
+				</div>
+
+				<div class="form-group form-inline " style="margin: 50px;">
+					<div class="col-lg-4">
+						<h4 th:text="${'计划开始日期：' + #dates.format(plan.planStartDate, 'yyyy-MM-dd HH:mm:ss') }">计划开始日期：</h4>
+					</div>
+					<div class="col-lg-4">
+						<h4 th:text="${'订单结束日期：' + #dates.format(plan.planEndDate, 'yyyy-MM-dd HH:mm:ss') }">订单结束日期：</h4>
+					</div>
+					<div class="col-lg-4">
+					  <h4 th:text="${'计划状态：' + plan.planStatus }">计划状态：</h4>
+					</div>
+				</div>
+	        </form>
+	      </div>
+	      <!-- /form-panel -->
+	    </div>
+	    <!-- /col-lg-12 -->
+	  </div>
+	  
+	  <!-- 工单安排 -->
+	  <div class="row mt" th:if="${(order.orderStatus ne 1) and (order.orderStatus ne 2) and (order.orderStatus ne 3)}">
+	    <div class="col-lg-12">
+	      <h4><i class="fa fa-angle-right"></i> 工单基本信息</h4>
+	      <div class="form-panel" style="background-color: #edffe9">
+			<div class="form-group outBox">
+				<table class="table  table-hover ">
+				  <thead>
+				      <tr style="background-color: #aaff7f;">
+				          <th>工单号</th>
+				          <th>设备序列号</th>
+				          <th>生产数量</th>
+				          <th>起始日期</th>
+						  <th>工单状态</th>
+				      </tr>
+				  </thead>
+				  <tbody>
+					  <tr th:each="schedule,iterStat : ${schedules}">
+						  <td th:text="${schedule.scheduleSeq}"></td>
+						  <td th:text="${schedule.equipmentSeq}"></td>
+						  <td th:text="${schedule.scheduleCount}"></td>
+						  <td th:text="${#dates.format(schedule.startDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+						  <td th:text="${schedule.scheduleStatus}"></td>
+					  </tr>
+				  </tbody>
+				</table>
+			</div>
+
+	      </div>
+	      <!-- /form-panel -->
+	    </div>
+	    <!-- /col-lg-12 -->
+	  </div>
+
+	  <!--报工情况-->
+	  <div class="row mt" th:if="${(order.orderStatus ne 1) and (order.orderStatus ne 2) and (order.orderStatus ne 3)}">
+		  <div class="col-lg-12">
+			  <h4><i class="fa fa-angle-right"></i> 报工情况</h4>
+			  <div class="form-panel" style="background-color: #edffe9">
+				  <div class="form-group outBox">
+					  <table class="table table-bordered  ">
+						  <thead>
+						  <tr style="background-color: rgba(188,239,241,0.71);">
+							  <th>工单号</th>
+							  <th>设备序列号</th>
+							  <th>工单数量</th>
+							  <th>生产开始日期</th>
+							  <th>生产结束日期</th>
+							  <th>加工数量</th>
+							  <th>合格数量</th>
+						  </tr>
+						  </thead>
+						  <tbody>
+							  <tr th:each="dailyWork,iterStat : ${dailyWorks}">
+								  <td th:text="${dailyWork.scheduleSeq}"></td>
+								  <td th:text="${dailyWork.equipmentSeq}"></td>
+								  <td th:text="${dailyWork.scheduleCount}"></td>
+								  <td th:text="${#dates.format(dailyWork.startTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+								  <td th:text="${#dates.format(dailyWork.endTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+								  <td th:text="${dailyWork.workingCount}"></td>
+								  <td th:text="${dailyWork.qualifiedCount}"></td>
+							  </tr>
+						  </tbody>
+					  </table>
+				  </div>
+
+			  </div>
+			  <!-- /form-panel -->
+		  </div>
+			<!-- /col-lg-12 -->
+		</div>
+
+
+
+	  
+	</section>
+	
+
+	<!-- 主内容结束 -->
+</div>
+
+<script>
+	var vm = new Vue({
+		el:"#app2",
+		data:{
+			userName:null,
+
+		},
+		methods:{
+			getUser:function () {
+				axios
+						.get("http://localhost:8080/getUser")
+						.then(response =>{
+							if(response.data.result == true){
+								this.userName = response.data.data;
+							}else {
+								alert("您未登录")
+								window.location.href = 'http://localhost:8080/login.html';
+							}
+						})
+						.catch(function(error){
+							console.log(error);
+						});
+			},
+			logout:function () {
+				axios
+						.get("http://localhost:8080/logout")
+						.then(response =>{
+							window.location.href = 'http://localhost:8080/login.html';
+						})
+						.catch(function(error){
+							console.log(error);
+						});
+			}
+		},
+		created() {
+			this.getUser();
+		}
+	})
+</script>
+
+
+
+<!-- jquery
+    ============================================ -->
+<script src="http://localhost:8080/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="http://localhost:8080/js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="http://localhost:8080/js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="http://localhost:8080/js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="http://localhost:8080/js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="http://localhost:8080/js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="http://localhost:8080/js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="http://localhost:8080/js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="http://localhost:8080/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="http://localhost:8080/js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="http://localhost:8080/js/metisMenu/metisMenu.min.js"></script>
+<script src="http://localhost:8080/js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="http://localhost:8080/js/sparkline/jquery.sparkline.min.js"></script>
+<script src="http://localhost:8080/js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="http://localhost:8080/js/calendar/moment.min.js"></script>
+<script src="http://localhost:8080/js/calendar/fullcalendar.min.js"></script>
+<script src="http://localhost:8080/js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="http://localhost:8080/js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="http://localhost:8080/js/main.js"></script>
+
+
+<!-- tawk chat JS
+    ============================================ -->
+<!-- <script src="js/tawk-chat.js"></script> -->
+</body>
+</html>
+
+<script>
+
+</script>
+<!-- datapicker JS
+	============================================ -->
+<script src="http://localhost:8080/js/datapicker/bootstrap-datepicker.js"></script>
+<script src="http://localhost:8080/js/datapicker/datepicker-active.js"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="http://localhost:8080/lib_Dashio/jquery/jquery.min.js"></script>
+<script src="http://localhost:8080/lib_Dashio/bootstrap/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="http://localhost:8080/lib_Dashio/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://localhost:8080/lib_Dashio/jquery.scrollTo.min.js"></script>
+<script src="http://localhost:8080/lib_Dashio/jquery.nicescroll.js" type="text/javascript"></script>
+<!--common script for all pages-->
+<script src="http://localhost:8080/lib_Dashio/common-scripts.js"></script>
+<!--script for this page-->
+<script src="http://localhost:8080/lib_Dashio/form-validation-script.js"></script>

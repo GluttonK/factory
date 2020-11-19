@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Library Assets | Kiaalap - Kiaalap Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- vue ajax -->
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> -->
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- owl.carousel CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- educate icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/educate-custon-icon.css">
+    <!-- morrisjs CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- datapicker CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/datapicker/datepicker3.css">
+    <style>
+        .add-order a {
+            float: right;
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            display: block;
+            background: #006DF0;
+            /* width: 120px; */
+            padding: 6px 20px;
+            /* margin: 0px 1100px; */
+            color: #fff;
+            border-radius: 4px;
+            /* text-align: center; */
+        }
+        .search-order a {
+            /* float: right; */
+            /* position: absolute;
+                  top: 40px;
+                  right: 35px; */
+            display: block;
+            background: #006DF0;
+            width: 120px;
+            font-size: 15px;
+            padding: 6px 20px;
+            margin: 0px 70px;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .input-group-addon{
+            color: white;
+            background-color: #009AD5;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Start Left menu area -->
+<div class="left-sidebar-pro" >
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+            <strong><a href="index.html"><img src="img/logo/logosn.png" alt="" /></a></strong>
+        </div>
+        <div class="left-custom-menu-adp-wrap comment-scrollbar">
+            <nav class="sidebar-nav left-sidebar-menu-pro">
+                <ul class="metismenu" id="menu1">
+                    <li>
+                        <a title="Landing Page" href="/login.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">登录/注册</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/index.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">工厂首页</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/product.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">产品管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/equipment.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">设备管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/order.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">订单管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/planmanage.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产计划管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/schedule.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产调度管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/ordertrack.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产订单跟踪</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+</div>
+<!-- End Left menu area -->
+<!-- 主内容 -->
+<div class="all-content-wrapper" id="app" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area">
+        <div class="header-top-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header-top-wraper">
+                            <div class="row">
+                                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                    <div class="menu-switcher-pro">
+                                        <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="educate-icon educate-nav"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="header-top-menu tabl-d-n">
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                            <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="header-right-info">
+                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
+
+                                            <li class="nav-item">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <img src="" alt="" />
+                                                    <span class="admin-name">{{userName}}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                </a>
+                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    <li><a @click="logout()"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul class="mobile-menu-nav">
+                                    <li><a href="events.html">Event</a></li>
+                                    <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demoevent" class="collapse dropdown-header-top">
+                                            <li><a href="all-professors.html">All Professors</a>
+                                            </li>
+                                            <li><a href="add-professor.html">Add Professor</a>
+                                            </li>
+                                            <li><a href="edit-professor.html">Edit Professor</a>
+                                            </li>
+                                            <li><a href="professor-profile.html">Professor Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demopro" class="collapse dropdown-header-top">
+                                            <li><a href="all-students.html">All Students</a>
+                                            </li>
+                                            <li><a href="add-student.html">Add Student</a>
+                                            </li>
+                                            <li><a href="edit-student.html">Edit Student</a>
+                                            </li>
+                                            <li><a href="student-profile.html">Student Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="democrou" class="collapse dropdown-header-top">
+                                            <li><a href="all-courses.html">All Courses</a>
+                                            </li>
+                                            <li><a href="add-course.html">Add Course</a>
+                                            </li>
+                                            <li><a href="edit-course.html">Edit Course</a>
+                                            </li>
+                                            <li><a href="course-profile.html">Courses Info</a>
+                                            </li>
+                                            <li><a href="course-payment.html">Courses Payment</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demolibra" class="collapse dropdown-header-top">
+                                            <li><a href="library-assets.html">Library Assets</a>
+                                            </li>
+                                            <li><a href="add-library-assets.html">Add Library Asset</a>
+                                            </li>
+                                            <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <li><a href="departments.html">Departments List</a>
+                                            </li>
+                                            <li><a href="add-department.html">Add Departments</a>
+                                            </li>
+                                            <li><a href="edit-department.html">Edit Departments</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demo" class="collapse dropdown-header-top">
+                                            <li><a href="mailbox.html">Inbox</a>
+                                            </li>
+                                            <li><a href="mailbox-view.html">View Mail</a>
+                                            </li>
+                                            <li><a href="mailbox-compose.html">Compose Mail</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                            <li><a href="google-map.html">Google Map</a>
+                                            </li>
+                                            <li><a href="data-maps.html">Data Maps</a>
+                                            </li>
+                                            <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                            </li>
+                                            <li><a href="x-editable.html">X-Editable</a>
+                                            </li>
+                                            <li><a href="code-editor.html">Code Editor</a>
+                                            </li>
+                                            <li><a href="tree-view.html">Tree View</a>
+                                            </li>
+                                            <li><a href="preloader.html">Preloader</a>
+                                            </li>
+                                            <li><a href="images-cropper.html">Images Cropper</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                            <li><a href="bar-charts.html">Bar Charts</a>
+                                            </li>
+                                            <li><a href="line-charts.html">Line Charts</a>
+                                            </li>
+                                            <li><a href="area-charts.html">Area Charts</a>
+                                            </li>
+                                            <li><a href="rounded-chart.html">Rounded Charts</a>
+                                            </li>
+                                            <li><a href="c3.html">C3 Charts</a>
+                                            </li>
+                                            <li><a href="sparkline.html">Sparkline Charts</a>
+                                            </li>
+                                            <li><a href="peity.html">Peity Charts</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                            <li><a href="static-table.html">Static Table</a>
+                                            </li>
+                                            <li><a href="data-table.html">Data Table</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="formsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Pagemob" class="collapse dropdown-header-top">
+                                            <li><a href="login.html">Login</a>
+                                            </li>
+                                            <li><a href="register.html">Register</a>
+                                            </li>
+                                            <li><a href="lock.html">Lock</a>
+                                            </li>
+                                            <li><a href="password-recovery.html">Password Recovery</a>
+                                            </li>
+                                            <li><a href="404.html">404 Page</a></li>
+                                            <li><a href="500.html">500 Page</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list single-page-breadcome">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-horizontal">
+                                    <div class="col-lg-3">
+                                        <div class="input-group" >
+                                            <span class="input-group-addon">工单编号</span>
+                                            <input type="text" placeholder="工单编号" class="form-control" ref="search_sSeq">
+                                            <!--                                            <option v-for="scheduleSeq in scheduleSeqs" :value="scheduleSeq.scheduleSeq">{{scheduleSeq.scheduleSeq}}</option>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group" >
+                                            <span class="input-group-addon">产品</span>
+                                            <input type="text" placeholder="产品" class="form-control" ref="search_pro">
+                                            <!--                                             value=""-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">设备序列号</span>
+                                            <input type="text" placeholder="设备序列号" class="form-control" ref="search_eSeq">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 ">
+                                        <div class="input-group" >
+                                            <span class="input-group-addon">工单状态</span>
+                                            <select class="form-control" tabindex="-1" id="" name=""
+                                                    placeholder="请选择" ref="search_sStatus">
+                                                <option value="">请选择</option>
+                                                <option value="2">未完成</option>
+                                                <option value="3">已完成</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-2 search-order">
+                                        <a href="#" @click.prevent="submitSearch(1)"><i class="fa fa-search"></i>查询工单</a>
+                                    </div>
+
+                                </div>
+                                <!--                                <div class="search-order">-->
+                                <!--                                	&lt;!&ndash; 触发search事件， 显示第一页 &ndash;&gt;-->
+                                <!--                                	<a href="#" @click.prevent="submitSearch(1)"><i class="fa fa-search"></i>查询工单</a>-->
+                                <!--                                </div>-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="product-status mg-b-15"  >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="product-status-wrap">
+                        <h4>生产订单跟踪</h4>
+                        <div class="asset-inner">
+                            <table>
+                                <tr>
+                                    <th>工单编号</th>
+                                    <th>计划编号</th>
+                                    <th>工单状态</th>
+                                    <th>工单数量</th>
+                                    <th>产品</th>
+                                    <th>设备序列号</th>
+                                    <th>合格数</th>
+                                    <th>加工数量</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr v-for="(orderTrack, index) in orderTracks">
+                                    <!--                                    <td>{{index + 1}}</td>-->
+                                    <td>{{orderTrack.scheduleSeq}}</td>
+                                    <td>{{orderTrack.planSeq}}</td>
+                                    <td>
+                                        <button class="du-setting" v-if="orderTrack.scheduleStatus == 2" >未完成</button>
+                                        <button class="su-setting" v-if="orderTrack.scheduleStatus == 3" >已完成</button>
+                                    </td>
+                                    <td>{{orderTrack.scheduleCount}}</td>
+                                    <td>{{orderTrack.productName}}</td>
+                                    <td>{{orderTrack.equipmentSeq}}</td>
+                                    <td>{{orderTrack.qualifiedCount}}</td>
+                                    <td>{{orderTrack.workingCount}}</td>
+                                    <td>
+                                        <a v-if="(orderTrack.scheduleStatus == 2)"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#myModalChangeOrderTrack" @click="orderTrackChecked = orderTracks[index];orderTrack0=getTrackByPage1(1)">报工</i></button></a>
+                                        <button data-toggle="modal" title="Edit" class="pd-setting-ed" v-if="orderTrack.scheduleStatus == 3"
+                                                data-target="#myModalGetOrderTrack" @click="orderTrackChecked = orderTracks[index];orderTrack1=getTrackByPage1(1)">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>查看</button>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <!-- 分页-->
+
+                        <ul class="pagination">
+
+                        </ul>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#"
+                                                         @click="pages.pageNo == 1 ? pages.pageNo = 1 : pages.pageNo -= 1; getTrackByPage(pages.pageNo);">上一页</a></li>
+                                <li   v-for="i in pages.totalPage"  :class="[pages.pageNo != i ? '':'active']" >
+                                    <a href="#" @click.prevent="getTrackByPage(i)">{{i}}</a>
+                                </li>
+
+                                <li class="page-item"><a class="page-link" href="#"
+                                                         @click="pages.pageNo == pages.totalPage ? pages.pageNo = pages.totalPage : pages.pageNo += 1; getTrackByPage(pages.pageNo);">下一页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--	 查看生产订单跟踪页面-->
+    <div class="modal fade" id="myModalGetOrderTrack"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width: 800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" @click="submitSearch()" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalGetLabel">
+                        查看生产订单跟踪
+                    </h4>
+                </div>
+                <div>
+                    <div class="modal-body form-horizontal" style="height: 200px;">
+                        <div class="col-lg-4">
+                            <h5>工单信息</h5>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>计划编号：{{orderTrackChecked.planSeq}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>订单编号：{{orderTrackChecked.orderSeq}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>工单编号：{{orderTrackChecked.scheduleSeq}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>产品：{{orderTrackChecked.productName}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>开始时间：{{orderTrackChecked.startDate}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>结束时间：{{orderTrackChecked.endDate}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>设备序列号：{{orderTrackChecked.equipmentSeq}}</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="sparkline8-list">
+                            <div class="sparkline8-hd">
+                                <div class="main-sparkline8-hd">
+                                    <h5>报工信息</h5>
+                                </div>
+                            </div>
+                            <div class="sparkline8-graph">
+                                <div class="static-table-list">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>序列号</th>
+                                            <th>加工数量</th>
+                                            <th>合格数量</th>
+                                            <th>加工开始日期</th>
+                                            <th>加工结束日期</th>
+                                            <th>备注</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(orderTrack1, index) in orderTracks1">
+                                            <td>{{index + 1}}</td>
+                                            <td>{{orderTrack1.workingCount}}</td>
+                                            <td>{{orderTrack1.qualifiedCount}}</td>
+                                            <td>{{orderTrack1.startTime}}</td>
+                                            <td>{{orderTrack1.endTime}}</td>
+                                            <td>{{orderTrack1.bak}}</td>
+                                            <!--                                            <td style="text-align: center">-->
+                                            <!--                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#myModalUpdatePlan" @click="updateplan=tproductplans[index]">编辑</i></button>-->
+                                            <!--                                                <button data-toggle="tooltip" title="Delete" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true" @click="deleteplan(TProductPlan.id)">删除</i></button>-->
+                                            <!--                                            </td>-->
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="pagination">
+
+                                </ul>
+                                <div class="custom-pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#"
+                                                                 @click="pages.pageNo == 1 ? pages.pageNo = 1 : pages.pageNo -= 1; getTrackByPage1(pages.pageNo);">上一页</a></li>
+                                        <li   v-for="i in pages.totalPage"  :class="[pages.pageNo != i ? '':'active']" >
+                                            <a href="#" @click.prevent="getTrackByPage1(i)">{{i}}</a>
+                                        </li>
+
+                                        <li class="page-item"><a class="page-link" href="#"
+                                                                 @click="pages.pageNo == pages.totalPage ? pages.pageNo = pages.totalPage : pages.pageNo += 1; getTrackByPage1(pages.pageNo);">下一页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--					<p v-if="errors.length">-->
+                    <!--					<ul>-->
+                    <!--						<li class="text-danger" v-for="error in errors">{{ error }}</li>-->
+                    <!--					</ul>-->
+                    <!--					</p>-->
+
+
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal" @click="submitSearch()">关闭
+                        </button>
+                        <!--                        <button type="button" class="btn btn-primary" @click="submitAdd()">-->
+                        <!--                            创建-->
+                        <!--                        </button>-->
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--	 报工生产订单跟踪页面-->
+    <div class="modal fade" id="myModalChangeOrderTrack"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width: 800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" @click="submitSearch()" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalChangeLabel">
+                        查看生产订单跟踪
+                    </h4>
+                </div>
+                <div>
+                    <div class="modal-body form-horizontal" style="height: 200px;">
+                        <div class="col-lg-4">
+                            <h5>工单信息</h5>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>计划编号：{{orderTrackChecked.planSeq}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>订单编号：{{orderTrackChecked.orderSeq}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>工单编号：{{orderTrackChecked.scheduleSeq}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>产品：{{orderTrackChecked.productName}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>开始时间：{{orderTrackChecked.startDate}}</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>结束时间：{{orderTrackChecked.endDate}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-4">
+                                <h5>设备序列号：{{orderTrackChecked.equipmentSeq}}</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="sparkline8-list">
+                            <div class="sparkline8-hd">
+                                <div class="main-sparkline8-hd">
+                                    <h5>报工信息</h5>
+                                </div>
+                            </div>
+                            <div class="sparkline8-graph">
+                                <div class="static-table-list">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <!--                                            <th>设备序列号</th>-->
+                                            <th>加工数量</th>
+                                            <th>合格数量</th>
+                                            <th>加工开始日期</th>
+                                            <th>加工结束日期</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(orderTrack0, index) in orderTracks1">
+                                            <!--                                            <td>{{orderTrack0.equipmentSeq}}</td>-->
+                                            <td>{{orderTrack0.workingCount}}</td>
+                                            <td>{{orderTrack0.qualifiedCount}}</td>
+                                            <td>{{orderTrack0.startTime}}</td>
+                                            <td>{{orderTrack0.endTime}}</td>
+                                            <td>{{orderTrack0.bak}}</td>
+                                            <td style="text-align: center">
+                                                <a data-toggle="modal" data-target="#myModalUpdateOrderTrack" @click="updatetrack=orderTracks1[index]">编辑</a>
+                                                <a @click="deleteorderTrack(orderTrack0.id)">删除</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button data-toggle="modal" data-target="#myModalAddOrderTrack">新增报工</button>
+                                <ul class="pagination">
+
+                                </ul>
+                                <div class="custom-pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#"
+                                                                 @click="pages.pageNo == 1 ? pages.pageNo = 1 : pages.pageNo -= 1; getTrackByPage1(pages.pageNo);">上一页</a></li>
+                                        <li   v-for="i in pages.totalPage"  :class="[pages.pageNo != i ? '':'active']" >
+                                            <a href="#" @click.prevent="getTrackByPage1(i)">{{i}}</a>
+                                        </li>
+
+                                        <li class="page-item"><a class="page-link" href="#"
+                                                                 @click="pages.pageNo == pages.totalPage ? pages.pageNo = pages.totalPage : pages.pageNo += 1; getTrackByPage1(pages.pageNo);">下一页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal" @click="submitSearch()">关闭
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--    编辑-->
+    <div class="modal fade" id="myModalUpdateOrderTrack"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div>
+                    <div class="modal-body form-horizontal" style="height: 370px;">
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6" id="data_2">
+                                <label for="updatestartTime1" class="col-lg-5 control-label">加工开始时间：</label>
+                                <!--                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>-->
+                                <!--                                <input type="text" class="form-control" id="updatestartTime1" ref="startTime1"/>-->
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" id="updatestartTime1"  ref="startTime1" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6" id="data_2">
+                                <label for="updateendTime1" class="col-lg-5 control-label">加工结束时间：</label>
+                                <!--                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>-->
+                                <!--                                <input type="text" class="form-control" id="updateendTime1" ref="endTime1"/>-->
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" id="updateendTime1"  ref="endTime1" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6">
+                                <label for="updateworkingCount1" type="number" class="col-lg-5 control-label">加工数量：</label>
+                                <input type="text" class="form-control" id="updateworkingCount1" v-model="workingCount1"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="updatequalifiedCount1" type="number" class="col-lg-5 control-label">合格数量：</label>
+                                <input type="text" class="form-control" id="updatequalifiedCount1" v-model="qualifiedCount1"/>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6">
+                                <label for="updateunqualifiedCout1" type="number" class="col-lg-5 control-label">不合格数量：</label>
+                                <input type="text" class="form-control" id="updateunqualifiedCout1" v-model="unqualifiedCout1"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-5 control-label">是否报工:</label>
+                                <input type="radio" class="form-control" name="1" value="1"/>是
+                                <input type="radio" class="form-control" name="1" value="0"/>否
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 form-inline">
+                            <div>
+                                <label>备注：</label>
+                            </div>
+                            <!--                            </br>-->
+                            <textarea rows="10" cols="50" v-model="bak"></textarea>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" ref="btnClose2" class="btn btn-default"
+                                data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" @click="submitUpdate()">
+                            提交
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--    新增报工-->
+    <div class="modal fade" id="myModalAddOrderTrack"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div>
+                    <div class="modal-body form-horizontal" style="height: 370px;">
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6" id="data_2">
+                                <label for="addstartTime" class="col-lg-5 control-label">加工开始时间：</label>
+                                <!--                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>-->
+                                <!--                                <input type="text" class="form-control" id="addstartTime" ref="startTime"/>-->
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" id="addstartTime"  ref="startTime" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6" id="data_2">
+                                <label for="addendTime" class="col-lg-5 control-label">加工结束时间：</label>
+                                <!--                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>-->
+                                <!--                                <input type="text" class="form-control" id="addendTime" ref="endTime"/>-->
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" id="addendTime"  ref="endTime" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6">
+                                <label for="addworkingCount" type="number" class="col-lg-5 control-label">加工数量：</label>
+                                <input type="text" class="form-control" id="addworkingCount" v-model="workingCount"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="addqualifiedCount" type="number" class="col-lg-5 control-label">合格数量：</label>
+                                <input type="text" class="form-control" id="addqualifiedCount" v-model="qualifiedCount"/>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 form-inline">
+                            <div class="col-lg-6">
+                                <label for="addunqualifiedCout" type="number" class="col-lg-5 control-label">不合格数量：</label>
+                                <input type="text" class="form-control" id="addunqualifiedCout" v-model="unqualifiedCout"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-5 control-label">是否报工:</label>
+                                <input type="radio" name="0" value="1"/>是
+                                <input type="radio" name="0" value="0"/>否
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 form-inline">
+
+                            <label>备注：</label>
+
+                            <!--                            </br>-->
+                            <textarea rows="10" cols="50" v-model="bak"></textarea>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <div>
+                        <button type="button" ref="btnClose" class="btn btn-default"
+                                data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" @click="submitAdd()">
+                            提交
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
+    <!-- 主内容结束 -->
+
+</div>
+
+<!-- jquery
+    ============================================ -->
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="js/metisMenu/metisMenu.min.js"></script>
+<script src="js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="js/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="js/calendar/moment.min.js"></script>
+<script src="js/calendar/fullcalendar.min.js"></script>
+<script src="js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="js/main.js"></script>
+<!-- tawk chat JS
+    ============================================ -->
+<!-- <script src="js/tawk-chat.js"></script> -->
+
+</body>
+</html>
+
+<script>
+    var vue = new Vue({
+        el: "#app",
+        data: {
+            test:"cxl",
+            info: null,
+
+            //返回的表格数据
+            products:[],
+            orderTracks:[],
+            orderTracks1:[],
+            scheduleSeqs:[],
+            pages:{},
+            planSeq:null,
+            orderSeq:null,
+            pname:null,
+            scheduleId:null,
+            bak:"",
+
+            // scheduleSeq:null,
+            // scheduleStatus:null,
+            // scheduleCount:null,
+            // productName:null,
+            // equipmentSeq:null,
+            qualifiedCount:null,
+            unqualifiedCout:null,
+            workingCount:null,
+            qualifiedCount1:null,
+            unqualifiedCout1:null,
+            workingCount1:null,
+
+
+            orderTrackChecked:{},
+            updatetrack:{},
+            orderTrack0:{},
+            orderTrack1:{},
+            scheduleSeq:{},
+
+
+            //查询的参数
+
+            scheduleSeq:"",
+            scheduleStatus:"",
+            productName:"",
+            equipmentSeq:"",
+
+        },
+
+
+
+        mounted() {
+            this.getOrderTrackByPage(1);
+
+            // axios
+            //     .get('http://localhost:8080/orderTrack/getscheduleSeqs')
+            //     .then(response =>{
+            //         //清空产品集合对象
+            //         this.scheduleSeqs=null;
+            //
+            //         //取响应数据赋值给vue对象中的对象
+            //         this.scheduleSeqs=response.data.data;
+            //     })
+            //     .catch(function (error) { // 请求失败处理
+            //         console.log(error);
+            //     });
+
+        },
+
+        methods: {
+
+            add:function(m){return m<10?'0'+m:m},
+
+            fortime:function(timeStamp){
+                var time = new Date(timeStamp);
+                var y = time.getFullYear();
+                var m = time.getMonth()+1;
+                var d = time.getDate();
+                return y+'-'+this.add(m)+'-'+this.add(d);
+            },
+
+            changetime:function (data) {
+                var date = new Date(data)
+                var Y = date.getFullYear() + '-'
+                var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
+                var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+                var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+                var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+                var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds())
+                return Y + M + D + h + m + s
+            },
+            // 正常的显示。
+            // 不用获取当前查询的参数。当前参数只有在点击查询之后才会改变。
+            // 查询的时候是获取参数，然后再调用这个函数。
+            getTrackByPage:function(i){
+                formData = new FormData;
+                formData.append("scheduleSeq", this.scheduleSeq);
+                formData.append("scheduleStatus", this.scheduleStatus);
+                formData.append("productName", this.productName);
+                formData.append("equipmentSeq", this.equipmentSeq);
+                axios
+                    .post("http://localhost:8080/orderTrack/searchTrackByPage?page=" + i, formData)
+                    .then(response =>{
+                        //清空订单集合对象
+                        this.orderTracks=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        this.orderTracks=response.data.orderTracks;
+                        this.pages=response.data.pages;
+                        for(var i = 0; i < this.orderTracks.length; i++){
+                            this.orderTracks[i].startDate = this.fortime(this.orderTracks[i].startDate);
+                            this.orderTracks[i].endDate = this.fortime(this.orderTracks[i].endDate);
+                        }
+
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+
+            getSearchParam:function(){
+                //点击查询按钮之后，获取数据，进行动态查询
+
+                this.scheduleSeq = this.$refs.search_sSeq.value;
+                // this.scheduleSeq =scheduleSeq.scheduleSeq;
+                this.scheduleStatus = this.$refs.search_sStatus.value;
+                this.productName = this.$refs.search_pro.value;
+                this.equipmentSeq = this.$refs.search_eSeq.value;
+
+            },
+
+            submitSearch:function(){
+
+                this.getSearchParam();
+                this.getTrackByPage(1);
+            },
+
+            getTrackByPage1:function(i){
+                formData = new FormData;
+                this.scheduleId=this.orderTrackChecked.scheduleId;
+                formData.append("scheduleId", this.scheduleId);
+                axios
+                    .post("http://localhost:8080/orderTrack/searchTrackByPage1?page=" + i, formData)
+                    .then(response =>{
+                        //清空订单集合对象
+                        this.orderTracks1=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        this.orderTracks1=response.data.orderTracks;
+                        this.pages=response.data.pages;
+                        for(var i = 0; i < this.orderTracks1.length; i++){
+                            // console.log(this.orderTracks1[i].startTime);
+                            // console.log(this.orderTracks1[i].endDate);
+                            this.orderTracks1[i].startTime = this.changetime(this.orderTracks1[i].startTime);
+                            this.orderTracks1[i].endTime = this.changetime(this.orderTracks1[i].endTime);
+                            // console.log(this.orderTracks1[i].startTime);
+                            // console.log(this.orderTracks1[i].endTime);
+                        }
+
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+
+            deleteorderTrack:function (a) {
+                axios
+                    .get('http://localhost:8080/orderTrack/delete?id=' + a)
+                    .then(response => {
+                            this.getTrackByPage1(1);
+                        }
+                    )
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+            },
+
+            submitUpdate:function () {
+                const formData = new FormData();
+                this.scheduleId=this.orderTrackChecked.scheduleId;
+                this.startTime1 = this.$refs.startTime1.value;
+                this.endTime1 = this.$refs.endTime1.value;
+                var jsonupdatetrack = JSON.stringify(this.updatetrack);
+                console.log(111);
+                formData.append("updatetrack", jsonupdatetrack);
+                formData.append("scheduleId", this.scheduleId);
+                formData.append("workingCount", this.workingCount1);
+                formData.append("qualifiedCount", this.qualifiedCount1);
+                formData.append("unqualifiedCout", this.unqualifiedCout1);
+                formData.append("updatesTime", this.startTime1);
+                formData.append("updateeTime", this.endTime1);
+                formData.append("bak", this.bak);
+                console.log(jsonupdatetrack.startDate);
+                console.log(jsonupdatetrack.endDate);
+                console.log(this.endTime1);
+                console.log(this.startTime1);
+                if($('input:radio:checked').val()==1){
+                    axios
+                        .post("http://localhost:8080/orderTrack/updateStatus", formData)
+                        .then(response =>{
+                            if(response.data.result){
+                                // alert("新增成功！");
+                                // this.$refs.btnClose.click();
+                                console.log($('input:radio:checked').val());
+                                this.getTrackByPage1(1);
+                                //this.getPlans();
+                                // window.location="http://localhost:8080/order.html";
+                            }else{
+                                alert(response.data.errMsg);
+                            }
+                        })
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+                }
+
+                axios
+                    .post("http://localhost:8080/orderTrack/updateTrack", formData)
+                    .then(response =>{
+                        if(response.data.result){
+                            alert("编辑成功！");
+                            this.$refs.btnClose2.click();
+                            this.getTrackByPage1(1);
+                            //this.getPlans();
+                            // window.location="http://localhost:8080/order.html";
+                        }else{
+                            alert(response.data.errMsg);
+                        }
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+
+            },
+
+            submitAdd:function(){
+                const formData = new FormData();
+                this.scheduleId=this.orderTrackChecked.scheduleId;
+                this.startTime = this.$refs.startTime.value;
+                this.endTime = this.$refs.endTime.value;
+                formData.append("scheduleId", this.scheduleId);
+                formData.append("workingCount", this.workingCount);
+                formData.append("qualifiedCount", this.qualifiedCount);
+                formData.append("unqualifiedCout", this.unqualifiedCout);
+                formData.append("startTime", this.startTime);
+                formData.append("endTime", this.endTime);
+                formData.append("bak", this.bak);
+                if($('input:radio:checked').val()==1){
+                    axios
+                        .post("http://localhost:8080/orderTrack/updateStatus", formData)
+                        .then(response =>{
+                            if(response.data.result){
+                                // alert("新增成功！");
+                                // this.$refs.btnClose.click();
+                                console.log($('input:radio:checked').val());
+                                this.getTrackByPage1(1);
+                                //this.getPlans();
+                                // window.location="http://localhost:8080/order.html";
+                            }else{
+                                alert(response.data.errMsg);
+                            }
+                        })
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+                }
+
+                axios
+                    .post("http://localhost:8080/orderTrack/addTrack", formData)
+                    .then(response =>{
+                        if(response.data.result){
+                            alert("新增成功！");
+                            this.$refs.btnClose.click();
+                            this.getTrackByPage1(1);
+                            //this.getPlans();
+                            // window.location="http://localhost:8080/order.html";
+                        }else{
+                            alert(response.data.errMsg);
+                        }
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            },
+            getUser:function () {
+                axios
+                    .get("http://localhost:8080/getUser")
+                    .then(response =>{
+                        if(response.data.result == true){
+                            this.userName = response.data.data;
+                        }else {
+                            alert("您未登录")
+                            window.location.href = 'http://localhost:8080/login.html';
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+            logout:function () {
+                axios
+                    .get("http://localhost:8080/logout")
+                    .then(response =>{
+                        window.location.href = 'http://localhost:8080/login.html';
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            }
+
+        },
+        created() {
+            this.getUser();
+        },
+
+
+        mounted() {
+            this.getTrackByPage(1);
+            // this.getProducts();
+        }
+
+
+
+    })
+</script>
+<!-- datapicker JS
+	============================================ -->
+<script src="js/datapicker/bootstrap-datepicker.js"></script>
+<script src="js/datapicker/datepicker-active.js"></script>
+
+<!-- jquery
+    ============================================ -->
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="js/metisMenu/metisMenu.min.js"></script>
+<script src="js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="js/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="js/calendar/moment.min.js"></script>
+<script src="js/calendar/fullcalendar.min.js"></script>
+<script src="js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="js/main.js"></script>
+<!-- tawk chat JS
+    ============================================ -->
+<!-- <script src="js/tawk-chat.js"></script> -->
+

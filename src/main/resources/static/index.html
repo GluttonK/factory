@@ -1,0 +1,1074 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>工厂首页</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <!-- vue ajax -->
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> -->
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- meanmenu icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- educate icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/educate-custon-icon.css">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        .card-panel {
+            transition: box-shadow .25s;
+            padding: 20px;
+            margin: 0.5rem 0 1rem 0;
+            border-radius: 2px;
+            background-color: #fff;
+        }
+        .easypiechart1 {
+            position: relative;
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto 10px auto;
+        }
+        .easypiechart2 {
+            position: relative;
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto 10px auto;
+        }
+        .easypiechart3 {
+            position: relative;
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto 10px auto;
+        }
+        .easypiechart4 {
+            position: relative;
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto 10px auto;
+        }
+        .easypiechart1 .percent1 {
+            display: block;
+            position: absolute;
+            font-size: 26px;
+            top: 38px;
+            width: 120px;
+        }
+        .easypiechart2 .percent2 {
+            display: block;
+            position: absolute;
+            font-size: 26px;
+            top: 38px;
+            width: 120px;
+        }
+        .easypiechart3 .percent3 {
+            display: block;
+            position: absolute;
+            font-size: 26px;
+            top: 38px;
+            width: 120px;
+        }
+        .easypiechart4 .percent4 {
+            display: block;
+            position: absolute;
+            font-size: 26px;
+            top: 38px;
+            width: 120px;
+        }
+        .du-setting {
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 15px;
+            background: #bf9808;
+            border-radius: 3px;
+            outline:none;
+        }
+        .su-setting {
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 15px;
+            background: #00aa00;
+            border-radius: 3px;
+            outline:none;
+        }
+        .pd-setting {
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 15px;
+            background: #006DF0;
+            border-radius: 3px;
+            outline:none;
+        }
+        .ps-setting {
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 15px;
+            background: #933EC5;
+            border-radius: 3px;
+            outline:none;
+        }
+        .ds-setting {
+            border: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 15px;
+            background: #D80027;
+            border-radius: 3px;
+            outline:none;
+        }
+    </style>
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Start Left menu area -->
+<div class="left-sidebar-pro">
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+            <strong><a href="index.html"><img src="img/logo/logosn.png" alt="" /></a></strong>
+        </div>
+        <div class="left-custom-menu-adp-wrap comment-scrollbar">
+            <nav class="sidebar-nav left-sidebar-menu-pro">
+                <ul class="metismenu" id="menu1">
+                    <li>
+                        <a title="Landing Page" href="/login.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">登录/注册</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/index.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">工厂首页</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/product.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">产品管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/equipment.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">设备管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/order.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">订单管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/planmanage.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产计划管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/schedule.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产调度管理</span></a>
+                    </li>
+                    <li>
+                        <a title="Landing Page" href="/ordertrack.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">生产订单跟踪</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+</div>
+<!-- End Left menu area -->
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area" id="app2">
+        <div class="header-top-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header-top-wraper">
+                            <div class="row">
+                                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                    <div class="menu-switcher-pro">
+                                        <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="educate-icon educate-nav"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="header-top-menu tabl-d-n">
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                            <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="header-right-info">
+                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
+
+                                            <li class="nav-item">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <img src="" alt="" />
+                                                    <span class="admin-name">{{userName}}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                </a>
+                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    <li><a @click="logout()"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu start -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul class="mobile-menu-nav">
+                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul class="collapse dropdown-header-top">
+                                            <li><a href="index.html">Dashboard v.1</a></li>
+                                            <li><a href="index-1.html">Dashboard v.2</a></li>
+                                            <li><a href="index-3.html">Dashboard v.3</a></li>
+                                            <li><a href="analytics.html">Analytics</a></li>
+                                            <li><a href="widgets.html">Widgets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="events.html">Event</a></li>
+                                    <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demoevent" class="collapse dropdown-header-top">
+                                            <li><a href="all-professors.html">All Professors</a>
+                                            </li>
+                                            <li><a href="add-professor.html">Add Professor</a>
+                                            </li>
+                                            <li><a href="edit-professor.html">Edit Professor</a>
+                                            </li>
+                                            <li><a href="professor-profile.html">Professor Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demopro" class="collapse dropdown-header-top">
+                                            <li><a href="all-students.html">All Students</a>
+                                            </li>
+                                            <li><a href="add-student.html">Add Student</a>
+                                            </li>
+                                            <li><a href="edit-student.html">Edit Student</a>
+                                            </li>
+                                            <li><a href="student-profile.html">Student Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="democrou" class="collapse dropdown-header-top">
+                                            <li><a href="all-courses.html">All Courses</a>
+                                            </li>
+                                            <li><a href="add-course.html">Add Course</a>
+                                            </li>
+                                            <li><a href="edit-course.html">Edit Course</a>
+                                            </li>
+                                            <li><a href="course-profile.html">Courses Info</a>
+                                            </li>
+                                            <li><a href="course-payment.html">Courses Payment</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demolibra" class="collapse dropdown-header-top">
+                                            <li><a href="library-assets.html">Library Assets</a>
+                                            </li>
+                                            <li><a href="add-library-assets.html">Add Library Asset</a>
+                                            </li>
+                                            <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <li><a href="departments.html">Departments List</a>
+                                            </li>
+                                            <li><a href="add-department.html">Add Departments</a>
+                                            </li>
+                                            <li><a href="edit-department.html">Edit Departments</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="demo" class="collapse dropdown-header-top">
+                                            <li><a href="mailbox.html">Inbox</a>
+                                            </li>
+                                            <li><a href="mailbox-view.html">View Mail</a>
+                                            </li>
+                                            <li><a href="mailbox-compose.html">Compose Mail</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                            <li><a href="google-map.html">Google Map</a>
+                                            </li>
+                                            <li><a href="data-maps.html">Data Maps</a>
+                                            </li>
+                                            <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                            </li>
+                                            <li><a href="x-editable.html">X-Editable</a>
+                                            </li>
+                                            <li><a href="code-editor.html">Code Editor</a>
+                                            </li>
+                                            <li><a href="tree-view.html">Tree View</a>
+                                            </li>
+                                            <li><a href="preloader.html">Preloader</a>
+                                            </li>
+                                            <li><a href="images-cropper.html">Images Cropper</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                            <li><a href="bar-charts.html">Bar Charts</a>
+                                            </li>
+                                            <li><a href="line-charts.html">Line Charts</a>
+                                            </li>
+                                            <li><a href="area-charts.html">Area Charts</a>
+                                            </li>
+                                            <li><a href="rounded-chart.html">Rounded Charts</a>
+                                            </li>
+                                            <li><a href="c3.html">C3 Charts</a>
+                                            </li>
+                                            <li><a href="sparkline.html">Sparkline Charts</a>
+                                            </li>
+                                            <li><a href="peity.html">Peity Charts</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                            <li><a href="static-table.html">Static Table</a>
+                                            </li>
+                                            <li><a href="data-table.html">Data Table</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="formsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                            </li>
+                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                            </li>
+                                            <li><a href="password-meter.html">Password Meter</a>
+                                            </li>
+                                            <li><a href="multi-upload.html">Multi Upload</a>
+                                            </li>
+                                            <li><a href="tinymc.html">Text Editor</a>
+                                            </li>
+                                            <li><a href="dual-list-box.html">Dual List Box</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="Pagemob" class="collapse dropdown-header-top">
+                                            <li><a href="login.html">Login</a>
+                                            </li>
+                                            <li><a href="register.html">Register</a>
+                                            </li>
+                                            <li><a href="lock.html">Lock</a>
+                                            </li>
+                                            <li><a href="password-recovery.html">Password Recovery</a>
+                                            </li>
+                                            <li><a href="404.html">404 Page</a></li>
+                                            <li><a href="500.html">500 Page</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="border: 2px solid #7dd3e8; padding: 20px 20px; margin: 10px; ">
+        <!-- /. ROW  -->
+        <h3>设备信息</h3>
+        <div class="row" >
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="card-panel text-center">
+                                <h5>开机率</h5>
+                                <div class="easypiechart1"  data-percent="" ><span class="percent1">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="card-panel text-center">
+                                <h5>故障率</h5>
+                                <div class="easypiechart2" data-percent="" ><span class="percent2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="card-panel text-center">
+                                <h5>停用率</h5>
+                                <div class="easypiechart3 "  ><span class="percent3">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="card-panel text-center">
+                                <h5>总和效率</h5>
+                                <div class="easypiechart4"  ><span class="percent4">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div>
+        <div id="app">
+            <div class="row" >
+                <div class="col-sm-6 col-md-3 col-lg-3" v-for="equipment in equipments">
+                    <div class="thumbnail">
+                        <img :src="equipment.equipmentImgUrl" alt="...">
+                        <div class="caption">
+                            <h5>设备序列号：{{equipment.equipmentSeq}}</h5>
+                            <h5>设备名称：{{equipment.equipmentName}}</h5>
+                            <button class="pd-setting" v-if="equipment.equipmentStatus == 10" >已启动</button>
+                            <button class="ps-setting" v-if="equipment.equipmentStatus == 20" >已停用</button>
+                            <button class="ds-setting" v-if="equipment.equipmentStatus == 30" >故障中</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-pagination">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#"
+                                             @click="pages.pageNo == 1 ? pages.pageNo = 1 : pages.pageNo -= 1; getEquipmentByPage(pages.pageNo);">上一页</a></li>
+                    <li   v-for="i in pages.totalPage"  :class="[pages.pageNo != i ? '':'active']" >
+                        <a href="#" @click.prevent="getEquipmentByPage(i)">{{i}}</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" href="#"
+                                             @click="pages.pageNo == pages.totalPage ? pages.pageNo = pages.totalPage : pages.pageNo += 1; getEquipmentByPage(pages.pageNo);">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $.get('http://localhost:8080/indexaction/getEquipmentStatus', function (data) {
+                $('.easypiechart1').easyPieChart({
+                    // easing: 'easeOutBounce',
+                    scaleColor: false,
+                    scaleLength: 10,
+                    barColor: '#30a5ff',
+                    onStep: function(from, to, percent) {
+                        $(this.el).find('.percent1').text(Math.round(percent) + '%');
+                    }
+
+                });
+                var chart = window.chart = $('.easypiechart1').data('easyPieChart');
+                chart.update(data.data[0]);
+                $('.easypiechart2').easyPieChart({
+                    // easing: 'easeOutBounce',
+                    scaleColor: false,
+                    barColor: '#f9243f',
+                    onStep: function(from, to, percent) {
+                        $(this.el).find('.percent2').text(Math.round(percent) + '%');
+                    }
+
+                });
+                var chart = window.chart = $('.easypiechart2').data('easyPieChart');
+                chart.update(data.data[2]);
+                $('.easypiechart3').easyPieChart({
+                    // easing: 'easeOutBounce',
+                    scaleColor: false,
+                    barColor: '#1ebfae',
+                    onStep: function(from, to, percent) {
+                        $(this.el).find('.percent3').text(Math.round(percent) + '%');
+                    }
+
+                });
+                var chart = window.chart = $('.easypiechart3').data('easyPieChart');
+                chart.update(data.data[1]);
+                $('.easypiechart4').easyPieChart({
+                    // easing: 'easeOutBounce',
+                    scaleColor: false,
+                    barColor: '#ffb53e',
+                    onStep: function(from, to, percent) {
+                        $(this.el).find('.percent4').text(Math.round(percent) + '%');
+                    }
+
+                });
+                var chart = window.chart = $('.easypiechart4').data('easyPieChart');
+                chart.update(data.data[0]);
+            }, 'json');
+        });
+    </script>
+
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div class="charts-area mg-b-15" style="border: 2px solid #7dd3e8; padding: 20px 20px; margin: 10px;">
+        <div class="container-fluid">
+            <div class="row">
+                <h3>订单信息</h3>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="charts-single-pro responsive-mg-b-30">
+                        <div class="alert-title">
+                            <h2>订单状态</h2>
+                        </div>
+                        <div id="orderStatus" style="width: 550px; height: 600px;"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                    <div class="charts-single-pro ">
+                        <div class="alert-title">
+                            <h2>各月份订单数量</h2>
+                        </div>
+                        <div id="orderMonth" style="width: 600px; height: 600px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jquery
+    ============================================ -->
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+    ============================================ -->
+<script src="js/bootstrap.min.js"></script>
+<!-- wow JS
+    ============================================ -->
+<script src="js/wow.min.js"></script>
+<!-- price-slider JS
+    ============================================ -->
+<script src="js/jquery-price-slider.js"></script>
+<!-- meanmenu JS
+    ============================================ -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- owl.carousel JS
+    ============================================ -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- sticky JS
+    ============================================ -->
+<script src="js/jquery.sticky.js"></script>
+<!-- scrollUp JS
+    ============================================ -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- mCustomScrollbar JS
+    ============================================ -->
+<script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+<!-- metisMenu JS
+    ============================================ -->
+<script src="js/metisMenu/metisMenu.min.js"></script>
+<script src="js/metisMenu/metisMenu-active.js"></script>
+<!-- morrisjs JS
+    ============================================ -->
+<script src="js/sparkline/jquery.sparkline.min.js"></script>
+<script src="js/sparkline/jquery.charts-sparkline.js"></script>
+<!-- calendar JS
+    ============================================ -->
+<script src="js/calendar/moment.min.js"></script>
+<script src="js/calendar/fullcalendar.min.js"></script>
+<script src="js/calendar/fullcalendar-active.js"></script>
+<!-- plugins JS
+    ============================================ -->
+<script src="js/plugins.js"></script>
+<!-- main JS
+    ============================================ -->
+<script src="js/main.js"></script>
+</body>
+
+</html>
+
+<!--vue部分-->
+<script type="text/javascript">
+    var vue = new Vue({
+        el:"#app",
+        data:{
+
+            /*分页获取的设备信息*/
+            equipments: [],
+            pages: [],
+
+        },
+
+        methods:{
+            refresh:function(){
+                this.$forceUpdate();
+            },
+
+
+            //正常的显示。
+            //不用获取当前查询的参数。当前参数只有在点击查询之后才会改变。
+            //查询的时候是获取参数，然后再调用这个函数。
+            getEquipmentByPage:function(i){
+                axios
+                    .get("http://localhost:8080/indexaction/getEquipmentsByPage?page=" + i)
+                    .then(response =>{
+                        //清空设备集合对象
+                        this.equipments=null;
+                        //清空page对象
+                        this.pages=null;
+                        //取响应数据赋值给vue对象中的对象
+                        this.equipments=response.data.equipments;
+                        this.pages=response.data.pages;
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+
+        },
+
+        mounted() {
+            this.getEquipmentByPage(1);
+        }
+    })
+    var vm = new Vue({
+        el:"#app2",
+        data:{
+            userName:null,
+
+        },
+        methods:{
+            getUser:function () {
+                axios
+                    .get("http://localhost:8080/getUser")
+                    .then(response =>{
+                        if(response.data.result == true){
+                            this.userName = response.data.data;
+                        }else {
+                            alert("您未登录")
+                            window.location.href = 'http://localhost:8080/login.html';
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            },
+            logout:function () {
+                axios
+                    .get("http://localhost:8080/logout")
+                    .then(response =>{
+                        window.location.href = 'http://localhost:8080/login.html';
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+            }
+        },
+        created() {
+            this.getUser();
+        }
+    })
+</script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart2 = echarts.init(document.getElementById('orderMonth'));
+    // 指定图表的配置项和数据
+    var option = {
+        //--------------    标题 title  ----------------
+        // title: {
+        //     text: '各月份订单数量',
+        //     textStyle:{					//---主标题内容样式
+        //         color:'#000000'
+        //     },
+        //
+        //
+        //
+        //     				//---标题位置,因为图形是是放在一个dom中,因此用padding属性来定位
+        //
+        // },
+        //----------------   图例 legend  -----------------
+        legend: {
+            type:'plain',				//----图例类型，默认为'plain'，当图例很多时可使用'scroll'
+            top:'1%',					//----图例相对容器位置,top\bottom\left\right
+            selected:{
+                '订单数量':true,			//----图例选择,图形加载出来会显示选择的图例，默认为true
+            },
+            textStyle:{					//----图例内容样式
+                color:'#000000',				//---所有图例的字体颜色
+                //backgroundColor:'black',	//---所有图例的字体背景色
+            },
+            tooltip:{					//图例提示框，默认不显示
+                show:true,
+                color:'red',
+            },
+            data:[						//----图例内容
+                {
+                    fontSize:'20',
+                    name:'订单数量',
+                    icon:'circle',			//----图例的外框样式
+                    textStyle:{
+                        color:'#000000',		//----单独设置某一个图例的颜色
+                        //backgroundColor:'black',//---单独设置某一个图例的字体背景色
+                    }
+                }
+            ],
+        },
+
+        //--------------   提示框 -----------------
+        tooltip: {
+            show:true,					//---是否显示提示框,默认为true
+            trigger:'item',				//---数据项图形触发
+            axisPointer:{				//---指示样式
+                // type:'shadow',
+                axis:'auto',
+
+            },
+            //鼠标放在标题上提示的信息
+            padding:5,
+            textStyle:{					//---提示框内容样式
+                color: 'white',
+            },
+        },
+
+        //-------------  grid区域  ----------------
+        grid:{
+            show:false,					//---是否显示直角坐标系网格
+            top:80,						//---相对位置，top\bottom\left\right
+            containLabel:false,			//---grid 区域是否包含坐标轴的刻度标签
+            //鼠标放在柱子上，提示的信息
+            tooltip:{					//---鼠标焦点放在图形上，产生的提示框
+                show:true,
+                trigger:'item',			//---触发类型
+                textStyle:{
+                    color:'white',
+                },
+            }
+        },
+
+        //-------------   x轴   -------------------
+        xAxis: {
+            show:true,					//---是否显示
+            position:'bottom',			//---x轴位置
+            offset:0,					//---x轴相对于默认位置的偏移
+            type:'category',			//---轴类型，默认'category'
+            name:'月份',				//---轴名称
+            nameLocation:'end',			//---轴名称相对位置
+            nameTextStyle:{				//---坐标轴名称样式
+                color:"#000000",
+                padding:[5,0,0,-5],	//---坐标轴名称相对位置
+            },
+            nameGap:15,					//---坐标轴名称与轴线之间的距离
+            //nameRotate:270,			//---坐标轴名字旋转
+
+            axisLine:{					//---坐标轴 轴线
+                show:true,					//---是否显示
+
+                //------------------- 箭头 -------------------------
+                symbol:['none', 'arrow'],	//---是否显示轴线箭头
+                symbolSize:[8, 8] ,			//---箭头大小
+                symbolOffset:[0,7],			//---箭头位置
+
+                //------------------- 线 -------------------------
+                lineStyle:{
+                    color:'#000000',
+                    width:1,
+                    type:'solid',
+                },
+            },
+            axisTick:{					//---坐标轴 刻度
+                show:true,					//---是否显示
+                inside:true,				//---是否朝内
+                lengt:3,					//---长度
+                lineStyle:{
+                    //color:'red',			//---默认取轴线的颜色
+                    width:1,
+                    type:'solid',
+                },
+            },
+            axisLabel:{					//---坐标轴 标签
+                fontSize:'15',
+                show:true,					//---是否显示
+                inside:false,				//---是否朝内
+                rotate:0,					//---旋转角度
+                margin: 5,					//---刻度标签与轴线之间的距离
+                //color:'red',				//---默认取轴线的颜色
+            },
+            splitLine:{					//---grid 区域中的分隔线
+                show:false,					//---是否显示，'category'类目轴不显示，此时我的X轴为类目轴，splitLine属性是无意义的
+                lineStyle:{
+                    //color:'red',
+                    //width:1,
+                    //type:'solid',
+                },
+            },
+            splitArea:{					//--网格区域
+                show:false,					//---是否显示，默认false
+            },
+            data: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],//内容
+        },
+
+        //----------------------  y轴  ------------------------
+        yAxis: {
+            show:true,					//---是否显示
+            position:'left',			//---y轴位置
+            offset:0,					//---y轴相对于默认位置的偏移
+            type:'value',			//---轴类型，默认'category'
+            name:'订单量',				//---轴名称
+            nameLocation:'end',			//---轴名称相对位置value
+            nameTextStyle:{				//---坐标轴名称样式
+                color:"#000000",
+                padding:[5,0,0,5],	//---坐标轴名称相对位置
+            },
+            nameGap:15,					//---坐标轴名称与轴线之间的距离
+            //nameRotate:270,			//---坐标轴名字旋转
+
+            axisLine:{  //---坐标轴 轴线
+
+                show:true,					//---是否显示
+
+                //------------------- 箭头 -------------------------
+                symbol:['none', 'arrow'],	//---是否显示轴线箭头
+                symbolSize:[8, 8] ,			//---箭头大小
+                symbolOffset:[0,7],			//---箭头位置
+
+                //------------------- 线 -------------------------
+                lineStyle:{
+                    color:'#000000',
+                    width:1,
+                    type:'solid',
+                },
+            },
+            axisTick:{					//---坐标轴 刻度
+                show:true,					//---是否显示
+                inside:true,				//---是否朝内
+                lengt:3,					//---长度
+                lineStyle:{
+                    //color:'red',			//---默认取轴线的颜色
+                    width:1,
+                    type:'solid',
+                },
+            },
+            axisLabel:{					//---坐标轴 标签
+                fontSize:'15',
+                show:true,					//---是否显示
+                inside:false,				//---是否朝内
+                rotate:0,					//---旋转角度
+                margin: 8,					//---刻度标签与轴线之间的距离
+                //color:'red',				//---默认取轴线的颜色
+            },
+            splitLine:{					//---grid 区域中的分隔线
+                show:true,					//---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
+                lineStyle:{
+                    color:'#000000',
+                    width:1,
+                    type:'dashed',			//---类型
+                },
+            },
+            splitArea:{					//--网格区域
+                show:false,					//---是否显示，默认false
+            }
+        },
+
+        //------------ 内容数据  -----------------
+        series: [
+            {
+                name: '订单数量',				//---系列名称
+                type: 'bar',				//---类型
+                legendHoverLink:true,		//---是否启用图例 hover 时的联动高亮
+                label:{						//---图形上的文本标签
+                    show:false,
+                    position:'insideTop',	//---相对位置
+                    rotate:0,				//---旋转角度
+                    color:'rgba(0,0,0,0.01)',
+                },
+                itemStyle:{					//---图形形状
+                    color:'#95f5ce',
+                    barBorderRadius:[0,0,0,0],
+                },
+                barWidth:'30',				//---柱形宽度
+                barCategoryGap:'20%',		//---柱形间距
+                data: []
+            }
+        ]
+    };
+    $.get('http://localhost:8080/indexaction/getOrderMonthData', function (data) {
+        console.log(data.data);
+        myChart2.setOption({
+            series: [{
+                data: data.data
+            }]
+        });
+    }, 'json');
+    // 使用刚指定的配置项和数据显示图表。
+    myChart2.setOption(option);
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('orderStatus'));
+    $.get('http://localhost:8080/indexaction/getOrderStatusData', function (data) {
+        myChart.setOption({
+            series : [
+                {
+                    name: '订单信息',
+                    type: 'pie',    // 设置图表类型为饼图
+                    radius: '70%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                    data:data.data,
+                    fontSize:'15'
+                },
+
+            ]
+        })
+    }, 'json');
+    var option2 = {
+        //--------------   提示框 -----------------
+        tooltip: {
+            show:true,					//---是否显示提示框,默认为true
+            trigger:'item',				//---数据项图形触发
+            axisPointer:{				//---指示样式
+                // type:'shadow',
+                axis:'auto',
+
+            },
+            //鼠标放在标题上提示的信息
+            padding:5,
+            textStyle:{					//---提示框内容样式
+                color: 'white',
+            },
+        },
+        //-------------  grid区域  ----------------
+        grid:{
+            show:false,					//---是否显示直角坐标系网格
+            top:80,						//---相对位置，top\bottom\left\right
+            containLabel:false,			//---grid 区域是否包含坐标轴的刻度标签
+            //鼠标放在柱子上，提示的信息
+            tooltip:{					//---鼠标焦点放在图形上，产生的提示框
+                show:true,
+                trigger:'item',			//---触发类型
+                textStyle:{
+                    color:'white',
+                },
+            }
+        },
+    }
+    myChart.setOption(option2);
+
+</script>
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<script src="assets/materialize/js/materialize.min.js"></script>
+
+<!-- Metis Menu Js -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- Morris Chart Js -->
+<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="assets/js/morris/morris.js"></script>
+
+
+<script src="assets/js/easypiechart.js"></script>
+<!--<script src="assets/js/easypiechart-data.js"></script>-->
+
+<script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
+<!-- Custom Js -->
+<script src="assets/js/custom-scripts.js"></script>
